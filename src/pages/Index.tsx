@@ -33,7 +33,7 @@ const Index = () => {
   ];
 
   return (
-    <div className="snap-y snap-mandatory h-screen overflow-y-scroll">
+    <div className="overflow-y-auto">
       <Hero />
       
       <div id="scrollytelling">

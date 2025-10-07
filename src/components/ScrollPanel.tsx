@@ -36,14 +36,25 @@ export const ScrollPanel = ({ title, description, imageSrc, index }: ScrollPanel
   return (
     <div
       ref={panelRef}
-      className="min-h-screen flex items-center justify-center relative snap-start"
+      className="min-h-screen flex items-center justify-center relative overflow-hidden"
       style={{
-        background: `linear-gradient(135deg, 
-          hsl(260 95% ${4 + index * 3}%) 0%, 
-          hsl(265 83% ${15 + index * 5}%) 100%)`
+        backgroundImage: `url(${imageSrc})`,
+        backgroundSize: 'cover',
+        backgroundPosition: 'center',
+        backgroundRepeat: 'no-repeat'
       }}
     >
-      <div className="container mx-auto px-6 grid md:grid-cols-2 gap-12 items-center">
+      {/* Dark overlay */}
+      <div 
+        className="absolute inset-0" 
+        style={{
+          background: `linear-gradient(135deg, 
+            hsl(260 95% ${4 + index * 3}% / 0.95) 0%, 
+            hsl(265 83% ${15 + index * 5}% / 0.9) 100%)`
+        }}
+      />
+      
+      <div className="container mx-auto px-6 grid md:grid-cols-2 gap-12 items-center relative z-10">
         <div
           className={`transition-all duration-1000 ${
             isVisible
@@ -73,23 +84,11 @@ export const ScrollPanel = ({ title, description, imageSrc, index }: ScrollPanel
               : "opacity-0 translate-x-12 scale-95"
           }`}
         >
-          <div className="grid grid-cols-1 gap-8">
-            {/* Funnel diagram */}
-            <div className="relative">
-              <div className="absolute inset-0 bg-accent/20 rounded-3xl blur-3xl"></div>
-              <div className="relative bg-card/30 backdrop-blur-sm rounded-3xl p-8 border border-accent/20">
-                <FunnelDiagram activeStage={index} />
-              </div>
-            </div>
-            
-            {/* Associated image */}
-            <div className="relative">
-              <div className="absolute inset-0 bg-primary/10 rounded-2xl blur-xl"></div>
-              <img
-                src={imageSrc}
-                alt={title}
-                className="relative rounded-2xl shadow-xl w-full h-auto opacity-80"
-              />
+          {/* Funnel diagram */}
+          <div className="relative">
+            <div className="absolute inset-0 bg-accent/20 rounded-3xl blur-3xl"></div>
+            <div className="relative bg-card/30 backdrop-blur-sm rounded-3xl p-8 border border-accent/20">
+              <FunnelDiagram activeStage={index} />
             </div>
           </div>
         </div>

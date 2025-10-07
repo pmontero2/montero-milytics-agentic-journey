@@ -63,14 +63,6 @@ export const FunnelDiagram = ({ activeStage }: FunnelDiagramProps) => {
             </g>
           );
         })}
-
-        {/* Robot icon at bottom */}
-        <g transform="translate(130, 350)">
-          <circle cx="20" cy="20" r="18" fill="hsl(187 100% 50%)" opacity={activeStage === 3 ? "1" : "0.5"} className="transition-opacity duration-700" />
-          <circle cx="15" cy="15" r="3" fill="hsl(var(--background))" />
-          <circle cx="25" cy="15" r="3" fill="hsl(var(--background))" />
-          <rect x="12" y="22" width="16" height="4" rx="2" fill="hsl(var(--background))" />
-        </g>
       </svg>
     </div>
   );
