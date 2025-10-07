@@ -30,7 +30,7 @@ export const FinalPanel = () => {
   return (
     <div
       ref={panelRef}
-      className="min-h-screen flex items-center justify-center relative snap-start gradient-primary"
+      className="min-h-screen flex items-center justify-center relative gradient-primary"
     >
       <div className="absolute inset-0 opacity-10">
         <div className="absolute top-1/3 left-1/3 w-96 h-96 bg-accent rounded-full blur-3xl animate-pulse"></div>
