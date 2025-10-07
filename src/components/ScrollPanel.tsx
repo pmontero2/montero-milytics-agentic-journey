@@ -1,4 +1,5 @@
 import { useEffect, useRef, useState } from "react";
+import { FunnelDiagram } from "./FunnelDiagram";
 
 interface ScrollPanelProps {
   title: string;
@@ -72,13 +73,24 @@ export const ScrollPanel = ({ title, description, imageSrc, index }: ScrollPanel
               : "opacity-0 translate-x-12 scale-95"
           }`}
         >
-          <div className="relative">
-            <div className="absolute inset-0 bg-accent/20 rounded-3xl blur-2xl"></div>
-            <img
-              src={imageSrc}
-              alt={title}
-              className="relative rounded-3xl shadow-2xl w-full h-auto"
-            />
+          <div className="grid grid-cols-1 gap-8">
+            {/* Funnel diagram */}
+            <div className="relative">
+              <div className="absolute inset-0 bg-accent/20 rounded-3xl blur-3xl"></div>
+              <div className="relative bg-card/30 backdrop-blur-sm rounded-3xl p-8 border border-accent/20">
+                <FunnelDiagram activeStage={index} />
+              </div>
+            </div>
+            
+            {/* Associated image */}
+            <div className="relative">
+              <div className="absolute inset-0 bg-primary/10 rounded-2xl blur-xl"></div>
+              <img
+                src={imageSrc}
+                alt={title}
+                className="relative rounded-2xl shadow-xl w-full h-auto opacity-80"
+              />
+            </div>
           </div>
         </div>
       </div>
