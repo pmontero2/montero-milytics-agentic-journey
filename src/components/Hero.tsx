@@ -32,14 +32,23 @@ export const Hero = () => {
           Transformando negocios tradicionales en organizaciones autónomas impulsadas por agentes inteligentes
         </p>
         
-        <Button
-          onClick={scrollToContent}
-          size="lg"
-          className="bg-accent text-accent-foreground hover:bg-accent/90 font-bold text-lg px-8 py-6 rounded-full shadow-[var(--glow-accent)] hover:scale-105 transition-all duration-300"
-        >
-          Descubre cómo
-          <ArrowDown className="ml-2 h-5 w-5 animate-bounce" />
-        </Button>
+        <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
+          <Button
+            size="lg"
+            className="bg-accent text-accent-foreground hover:bg-accent/90 font-bold text-lg px-8 py-6 rounded-full shadow-[var(--glow-accent)] hover:scale-105 transition-all duration-300 min-h-[44px]"
+          >
+            Agenda una llamada
+          </Button>
+          <Button
+            onClick={scrollToContent}
+            variant="outline"
+            size="lg"
+            className="border-accent/30 text-foreground hover:bg-accent/10 font-semibold text-lg px-8 py-6 rounded-full hover:scale-105 transition-all duration-300 min-h-[44px]"
+          >
+            Descubre cómo
+            <ArrowDown className="ml-2 h-5 w-5 animate-bounce" />
+          </Button>
+        </div>
       </div>
     </section>
   );

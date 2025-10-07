@@ -68,11 +68,11 @@ export const ScrollPanel = ({ title, description, imageSrc, index }: ScrollPanel
             </span>
           </div>
           
-          <h2 className="text-5xl md:text-7xl font-bold mb-6 text-glow-accent">
+          <h2 className="text-5xl md:text-7xl font-bold mb-6 text-glow-accent drop-shadow-lg">
             {title}
           </h2>
           
-          <p className="text-xl md:text-2xl text-foreground/80 leading-relaxed">
+          <p className="text-xl md:text-2xl text-foreground max-w-2xl leading-relaxed font-semibold drop-shadow-md">
             {description}
           </p>
         </div>

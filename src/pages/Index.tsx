@@ -2,6 +2,9 @@ import { Hero } from "@/components/Hero";
 import { ScrollPanel } from "@/components/ScrollPanel";
 import { StickyCTA } from "@/components/StickyCTA";
 import { FinalPanel } from "@/components/FinalPanel";
+import { ScrollProgress } from "@/components/ScrollProgress";
+import { Testimonial } from "@/components/Testimonial";
+import { Footer } from "@/components/Footer";
 
 import robotLeadsImage from "@/assets/robot-leads.png";
 import robotConversionImage from "@/assets/robot-conversion.png";
@@ -12,22 +15,22 @@ const Index = () => {
   const panels = [
     {
       title: "Leads",
-      description: "Agentes inteligentes generando oportunidades de negocio 24/7. Identifican, califican y nutren leads mientras duermes.",
+      description: "Identificamos y calificamos oportunidades 24/7.",
       imageSrc: robotLeadsImage,
     },
     {
       title: "Conversión",
-      description: "Optimización automática de cada punto de contacto. Tus agentes aprenden y mejoran continuamente cada conversación.",
+      description: "Pases con contexto: datos completos → menos retrabajo.",
       imageSrc: robotConversionImage,
     },
     {
       title: "Velocidad",
-      description: "Respuestas instantáneas, decisiones en tiempo real. 10x más rápido que cualquier operación manual tradicional.",
+      description: "1ª respuesta en minutos, no horas.",
       imageSrc: robotSpeedImage,
     },
     {
       title: "Operaciones",
-      description: "Coordinación perfecta entre todos los agentes. Una sinfonía de automatización que nunca descansa.",
+      description: "Reposición a tiempo, menos quiebres y despachos claros.",
       imageSrc: robotOperationsImage,
     },
   ];
@@ -37,7 +40,7 @@ const Index = () => {
       <Hero />
       
       <div id="scrollytelling">
-        {panels.map((panel, index) => (
+        {panels.slice(0, 2).map((panel, index) => (
           <ScrollPanel
             key={panel.title}
             title={panel.title}
@@ -46,10 +49,25 @@ const Index = () => {
             index={index}
           />
         ))}
+        
+        <Testimonial />
+        
+        {panels.slice(2).map((panel, index) => (
+          <ScrollPanel
+            key={panel.title}
+            title={panel.title}
+            description={panel.description}
+            imageSrc={panel.imageSrc}
+            index={index + 2}
+          />
+        ))}
       </div>
 
       <FinalPanel />
       
+      <Footer />
+      
+      <ScrollProgress />
       <StickyCTA />
     </div>
   );

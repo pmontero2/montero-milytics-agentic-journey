@@ -76,10 +76,10 @@ export const FinalPanel = () => {
 
           <div className="mt-12 grid md:grid-cols-4 gap-6 max-w-4xl mx-auto">
             {[
-              { label: "Leads", value: "+342%" },
-              { label: "Conversión", value: "+187%" },
-              { label: "Velocidad", value: "10x" },
-              { label: "Eficiencia", value: "98%" },
+              { label: "Leads", value: "↑" },
+              { label: "Conversión", value: "↑" },
+              { label: "Velocidad", value: "↑" },
+              { label: "Eficiencia", value: "↑" },
             ].map((stat, index) => (
               <div
                 key={stat.label}
@@ -89,11 +89,49 @@ export const FinalPanel = () => {
                 style={{ transitionDelay: `${600 + index * 100}ms` }}
               >
                 <div className="text-4xl font-bold text-accent mb-2">{stat.value}</div>
-                <div className="text-foreground/60 text-sm uppercase tracking-wider">
+                <div className="text-foreground text-sm uppercase tracking-wider font-semibold">
                   {stat.label}
                 </div>
               </div>
             ))}
+          </div>
+
+          <div className="mt-20 max-w-4xl mx-auto">
+            <h3 className="text-3xl md:text-4xl font-bold mb-10 text-center">Cómo trabajamos</h3>
+            <div className="grid md:grid-cols-3 gap-8">
+              {[
+                {
+                  step: "01",
+                  title: "Descubrimiento",
+                  description: "Identificamos el KPI que más te duele y diseñamos la estrategia.",
+                },
+                {
+                  step: "02",
+                  title: "Piloto 2–3 semanas",
+                  description: "Implementamos un caso de uso específico y medimos resultados reales.",
+                },
+                {
+                  step: "03",
+                  title: "Despliegue + capacitación",
+                  description: "Escalamos la solución y entrenamos a tu equipo para la autonomía.",
+                },
+              ].map((item, index) => (
+                <div
+                  key={item.step}
+                  className={`bg-card/30 backdrop-blur border border-accent/20 rounded-2xl p-8 transition-all duration-1000 hover:border-accent/50 ${
+                    isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
+                  }`}
+                  style={{ transitionDelay: `${900 + index * 100}ms` }}
+                >
+                  <div className="text-accent/50 text-sm font-bold mb-3">{item.step}</div>
+                  <h4 className="text-xl font-bold mb-3 text-foreground">{item.title}</h4>
+                  <p className="text-foreground/70 leading-relaxed">{item.description}</p>
+                </div>
+              ))}
+            </div>
+            <p className="text-center text-xl text-foreground/80 mt-12 font-semibold">
+              ¿Qué KPI te duele? Elijamos uno y midamos.
+            </p>
           </div>
         </div>
       </div>
