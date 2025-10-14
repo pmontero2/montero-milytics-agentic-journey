@@ -164,7 +164,7 @@ Sobre Mí (/sobre-mi):
 // Configuración básica
 gtag('config', 'GA_MEASUREMENT_ID', {
   page_title: 'Brian Montero - Empresas Agénticas',
-  page_location: 'https://brianmontero.com',
+  page_location: 'https://www.bmontero.com',
   custom_map: {
     'custom_parameter_1': 'value_1'
   }

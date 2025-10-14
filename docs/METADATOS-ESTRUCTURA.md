@@ -34,11 +34,11 @@ Se ha implementado una estructura completa de metadatos para optimizar el SEO y 
 <meta property="og:type" content="website" />
 <meta property="og:title" content="Brian Montero — Empresas Agénticas, IA y Automatización" />
 <meta property="og:description" content="Agentes de IA para más leads, mejor conversión y respuestas 24/7. Pilotos en semanas con KPIs medibles." />
-<meta property="og:image" content="https://brianmontero.com/src/assets/logo-bmontero.png" />
+<meta property="og:image" content="https://www.bmontero.com/src/assets/logo-bmontero.png" />
 <meta property="og:image:width" content="1200" />
 <meta property="og:image:height" content="630" />
 <meta property="og:image:alt" content="Brian Montero - Especialista en IA y Automatización" />
-<meta property="og:url" content="https://brianmontero.com" />
+<meta property="og:url" content="https://www.bmontero.com" />
 <meta property="og:site_name" content="Brian Montero - Milytics" />
 <meta property="og:locale" content="es_ES" />
 ```
@@ -49,7 +49,7 @@ Se ha implementado una estructura completa de metadatos para optimizar el SEO y 
 <meta name="twitter:card" content="summary_large_image" />
 <meta name="twitter:title" content="Brian Montero — Empresas Agénticas, IA y Automatización" />
 <meta name="twitter:description" content="Agentes de IA para más leads, mejor conversión y respuestas 24/7. Pilotos en semanas con KPIs medibles." />
-<meta name="twitter:image" content="https://brianmontero.com/src/assets/logo-bmontero.png" />
+<meta name="twitter:image" content="https://www.bmontero.com/src/assets/logo-bmontero.png" />
 <meta name="twitter:image:alt" content="Brian Montero - Especialista en IA y Automatización" />
 <meta name="twitter:site" content="@brianmontero" />
 <meta name="twitter:creator" content="@brianmontero" />
@@ -62,7 +62,7 @@ Se ha implementado una estructura completa de metadatos para optimizar el SEO y 
 <meta name="theme-color" content="#000000" />
 
 <!-- WhatsApp specific -->
-<meta property="og:image:secure_url" content="https://brianmontero.com/src/assets/logo-bmontero.png" />
+<meta property="og:image:secure_url" content="https://www.bmontero.com/src/assets/logo-bmontero.png" />
 <meta name="format-detection" content="telephone=no" />
 ```
 
@@ -71,7 +71,7 @@ Se ha implementado una estructura completa de metadatos para optimizar el SEO y 
 <!-- Additional meta for better sharing -->
 <meta name="robots" content="index, follow" />
 <meta name="googlebot" content="index, follow" />
-<link rel="canonical" href="https://brianmontero.com" />
+<link rel="canonical" href="https://www.bmontero.com" />
 ```
 
 ### 7. Datos Estructurados (Schema.org)
@@ -88,8 +88,8 @@ Se ha implementado una estructura completa de metadatos para optimizar el SEO y 
     "name": "Milytics"
   },
   "description": "Agentes de IA para más leads, mejor conversión y respuestas 24/7. Pilotos en semanas con KPIs medibles.",
-  "url": "https://brianmontero.com",
-  "image": "https://brianmontero.com/src/assets/logo-bmontero.png",
+  "url": "https://www.bmontero.com",
+  "image": "https://www.bmontero.com/src/assets/logo-bmontero.png",
   "sameAs": [
     "https://twitter.com/brianmontero",
     "https://linkedin.com/in/brianmontero"
@@ -128,14 +128,14 @@ Allow: /
 ### URLs y Dominios
 
 #### URLs Canónicas
-- **Home**: `https://brianmontero.com/`
-- **Empresas**: `https://brianmontero.com/empresas`
-- **Sobre Mí**: `https://brianmontero.com/sobre-mi`
+- **Home**: `https://www.bmontero.com/`
+- **Empresas**: `https://www.bmontero.com/empresas`
+- **Sobre Mí**: `https://www.bmontero.com/sobre-mi`
 
 #### Imágenes
 - **Logo principal**: `/src/assets/logo-bmontero.png`
 - **Favicon**: `/favicon.ico`
-- **Open Graph**: `https://brianmontero.com/src/assets/logo-bmontero.png`
+- **Open Graph**: `https://www.bmontero.com/src/assets/logo-bmontero.png`
 
 ## 📊 Especificaciones Técnicas
 
@@ -199,7 +199,7 @@ npx lighthouse http://localhost:5173 --only-categories=seo
 - [ ] Comprobar velocidad de carga
 
 ### Actualizaciones Necesarias
-- [ ] Cambiar `https://brianmontero.com` por dominio real
+- [ ] Cambiar `https://www.bmontero.com` por dominio real
 - [ ] Actualizar `@brianmontero` por handle real de Twitter
 - [ ] Agregar perfiles reales en `sameAs`
 - [ ] Crear imagen OG personalizada de 1200x630px
@@ -216,7 +216,7 @@ npx lighthouse http://localhost:5173 --only-categories=seo
 
 #### Imágenes no aparecen en redes sociales
 - **Causa**: URL relativa en lugar de absoluta
-- **Solución**: Usar `https://brianmontero.com/ruta/imagen.png`
+- **Solución**: Usar `https://www.bmontero.com/ruta/imagen.png`
 
 #### Metadatos no se actualizan
 - **Causa**: Cache de redes sociales

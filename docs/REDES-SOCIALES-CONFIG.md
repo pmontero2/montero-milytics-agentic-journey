@@ -12,11 +12,11 @@ Optimizar el compartir de la página web en todas las redes sociales principales
 <meta property="og:type" content="website" />
 <meta property="og:title" content="Brian Montero — Empresas Agénticas, IA y Automatización" />
 <meta property="og:description" content="Agentes de IA para más leads, mejor conversión y respuestas 24/7. Pilotos en semanas con KPIs medibles." />
-<meta property="og:image" content="https://brianmontero.com/src/assets/logo-bmontero.png" />
+<meta property="og:image" content="https://www.bmontero.com/src/assets/logo-bmontero.png" />
 <meta property="og:image:width" content="1200" />
 <meta property="og:image:height" content="630" />
 <meta property="og:image:alt" content="Brian Montero - Especialista en IA y Automatización" />
-<meta property="og:url" content="https://brianmontero.com" />
+<meta property="og:url" content="https://www.bmontero.com" />
 <meta property="og:site_name" content="Brian Montero - Milytics" />
 <meta property="og:locale" content="es_ES" />
 ```
@@ -33,7 +33,7 @@ Optimizar el compartir de la página web en todas las redes sociales principales
 <meta name="twitter:card" content="summary_large_image" />
 <meta name="twitter:title" content="Brian Montero — Empresas Agénticas, IA y Automatización" />
 <meta name="twitter:description" content="Agentes de IA para más leads, mejor conversión y respuestas 24/7. Pilotos en semanas con KPIs medibles." />
-<meta name="twitter:image" content="https://brianmontero.com/src/assets/logo-bmontero.png" />
+<meta name="twitter:image" content="https://www.bmontero.com/src/assets/logo-bmontero.png" />
 <meta name="twitter:image:alt" content="Brian Montero - Especialista en IA y Automatización" />
 <meta name="twitter:site" content="@brianmontero" />
 <meta name="twitter:creator" content="@brianmontero" />
@@ -51,8 +51,8 @@ Optimizar el compartir de la página web en todas las redes sociales principales
 <meta property="og:type" content="website" />
 <meta property="og:title" content="Brian Montero — Empresas Agénticas, IA y Automatización" />
 <meta property="og:description" content="Agentes de IA para más leads, mejor conversión y respuestas 24/7. Pilotos en semanas con KPIs medibles." />
-<meta property="og:image" content="https://brianmontero.com/src/assets/logo-bmontero.png" />
-<meta property="og:url" content="https://brianmontero.com" />
+<meta property="og:image" content="https://www.bmontero.com/src/assets/logo-bmontero.png" />
+<meta property="og:url" content="https://www.bmontero.com" />
 ```
 
 **Características específicas**:
@@ -63,7 +63,7 @@ Optimizar el compartir de la página web en todas las redes sociales principales
 ### 4. WhatsApp
 ```html
 <!-- Optimización específica para WhatsApp -->
-<meta property="og:image:secure_url" content="https://brianmontero.com/src/assets/logo-bmontero.png" />
+<meta property="og:image:secure_url" content="https://www.bmontero.com/src/assets/logo-bmontero.png" />
 <meta property="og:image:type" content="image/png" />
 <meta name="theme-color" content="#000000" />
 <meta name="format-detection" content="telephone=no" />
@@ -81,7 +81,7 @@ Optimizar el compartir de la página web en todas las redes sociales principales
 <meta property="og:type" content="website" />
 <meta property="og:title" content="Brian Montero — Empresas Agénticas, IA y Automatización" />
 <meta property="og:description" content="Agentes de IA para más leads, mejor conversión y respuestas 24/7. Pilotos en semanas con KPIs medibles." />
-<meta property="og:image" content="https://brianmontero.com/src/assets/logo-bmontero.png" />
+<meta property="og:image" content="https://www.bmontero.com/src/assets/logo-bmontero.png" />
 ```
 
 **Características específicas**:

@@ -13,9 +13,9 @@ Landing page profesional para Brian Montero, especialista en IA y automatizació
 - **Términos de Servicio** (`/terms`) - Términos legales
 
 ### URLs Objetivo
-- `https://brianmontero.com/` - Página principal
-- `https://brianmontero.com/empresas` - Servicios empresariales
-- `https://brianmontero.com/sobre-mi` - Perfil profesional
+- `https://www.bmontero.com/` - Página principal
+- `https://www.bmontero.com/empresas` - Servicios empresariales
+- `https://www.bmontero.com/sobre-mi` - Perfil profesional
 
 ## 🔍 Palabras Clave Objetivo
 
@@ -56,8 +56,8 @@ Landing page profesional para Brian Montero, especialista en IA y automatizació
 <meta property="og:type" content="website" />
 <meta property="og:title" content="Brian Montero — Empresas Agénticas, IA y Automatización" />
 <meta property="og:description" content="Agentes de IA para más leads, mejor conversión y respuestas 24/7. Pilotos en semanas con KPIs medibles." />
-<meta property="og:image" content="https://brianmontero.com/src/assets/logo-bmontero.png" />
-<meta property="og:url" content="https://brianmontero.com" />
+<meta property="og:image" content="https://www.bmontero.com/src/assets/logo-bmontero.png" />
+<meta property="og:url" content="https://www.bmontero.com" />
 <meta property="og:locale" content="es_ES" />
 ```
 
@@ -66,13 +66,13 @@ Landing page profesional para Brian Montero, especialista en IA y automatizació
 <meta name="twitter:card" content="summary_large_image" />
 <meta name="twitter:title" content="Brian Montero — Empresas Agénticas, IA y Automatización" />
 <meta name="twitter:description" content="Agentes de IA para más leads, mejor conversión y respuestas 24/7. Pilotos en semanas con KPIs medibles." />
-<meta name="twitter:image" content="https://brianmontero.com/src/assets/logo-bmontero.png" />
+<meta name="twitter:image" content="https://www.bmontero.com/src/assets/logo-bmontero.png" />
 <meta name="twitter:site" content="@brianmontero" />
 ```
 
 ### WhatsApp Optimizado
 ```html
-<meta property="og:image:secure_url" content="https://brianmontero.com/src/assets/logo-bmontero.png" />
+<meta property="og:image:secure_url" content="https://www.bmontero.com/src/assets/logo-bmontero.png" />
 <meta property="og:image:type" content="image/png" />
 <meta name="theme-color" content="#000000" />
 ```
@@ -91,8 +91,8 @@ Landing page profesional para Brian Montero, especialista en IA y automatizació
     "name": "Milytics"
   },
   "description": "Agentes de IA para más leads, mejor conversión y respuestas 24/7. Pilotos en semanas con KPIs medibles.",
-  "url": "https://brianmontero.com",
-  "image": "https://brianmontero.com/src/assets/logo-bmontero.png",
+  "url": "https://www.bmontero.com",
+  "image": "https://www.bmontero.com/src/assets/logo-bmontero.png",
   "sameAs": [
     "https://twitter.com/brianmontero",
     "https://linkedin.com/in/brianmontero"
@@ -134,9 +134,9 @@ Allow: /
 ```
 
 ### Canonical URLs
-- **Home**: `https://brianmontero.com/`
-- **Empresas**: `https://brianmontero.com/empresas`
-- **Sobre Mí**: `https://brianmontero.com/sobre-mi`
+- **Home**: `https://www.bmontero.com/`
+- **Empresas**: `https://www.bmontero.com/empresas`
+- **Sobre Mí**: `https://www.bmontero.com/sobre-mi`
 
 ## 📈 Métricas Objetivo
 

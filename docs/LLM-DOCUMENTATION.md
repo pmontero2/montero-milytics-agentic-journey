@@ -160,9 +160,9 @@ interface FAQ {
 - **Long-tail**: Agentes de IA para más leads, automatización con IA
 
 ### URLs Objetivo
-- `https://brianmontero.com/` - Página principal
-- `https://brianmontero.com/empresas` - Servicios empresariales
-- `https://brianmontero.com/sobre-mi` - Perfil profesional
+- `https://www.bmontero.com/` - Página principal
+- `https://www.bmontero.com/empresas` - Servicios empresariales
+- `https://www.bmontero.com/sobre-mi` - Perfil profesional
 
 ## 📊 Analytics y Métricas
 
@@ -212,7 +212,7 @@ interface FAQ {
 
 ### Variables de Entorno
 ```env
-VITE_SITE_URL=https://brianmontero.com
+VITE_SITE_URL=https://www.bmontero.com
 VITE_CONTACT_EMAIL=contacto@brianmontero.com
 VITE_ANALYTICS_ID=GA_MEASUREMENT_ID
 ```
