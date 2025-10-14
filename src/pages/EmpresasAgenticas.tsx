@@ -76,6 +76,62 @@ const EmpresasAgenticas = () => {
         <AgenticConcept />
       </div>
       
+      {/* Introducción a los agentes trabajando en conjunto */}
+      <div id="servicios" className="min-h-screen flex items-center justify-center relative overflow-hidden gradient-primary">
+        {/* Animated Background */}
+        <div className="absolute inset-0 opacity-20">
+          <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-accent rounded-full blur-3xl animate-pulse"></div>
+          <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-primary rounded-full blur-3xl animate-pulse delay-1000"></div>
+          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-64 h-64 bg-accent/50 rounded-full blur-2xl animate-pulse delay-500"></div>
+        </div>
+
+        {/* Floating Elements */}
+        <div className="absolute inset-0 overflow-hidden pointer-events-none">
+          <div className="absolute top-20 left-10 w-2 h-2 bg-accent rounded-full animate-ping delay-1000"></div>
+          <div className="absolute top-40 right-20 w-3 h-3 bg-primary rounded-full animate-ping delay-2000"></div>
+          <div className="absolute bottom-40 left-20 w-2 h-2 bg-accent rounded-full animate-ping delay-3000"></div>
+          <div className="absolute bottom-20 right-10 w-3 h-3 bg-primary rounded-full animate-ping delay-4000"></div>
+        </div>
+
+        {/* Dark overlay for better text readability */}
+        <div className="absolute inset-0 bg-gradient-to-br from-background/80 via-background/70 to-background/80 lg:from-background/90 lg:via-background/80 lg:to-background/90"></div>
+        
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10">
+          <div className="max-w-6xl mx-auto">
+            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold mb-6 text-glow-accent">
+              Nuestros Agentes Trabajan en <span className="text-accent">Conjunto</span>
+            </h2>
+            <p className="text-lg sm:text-xl text-foreground/90 max-w-4xl mx-auto leading-relaxed mb-12">
+              Cada agente tiene una especialidad única, pero todos están conectados para crear una experiencia fluida y eficiente. 
+              Cuando un agente completa su tarea, automáticamente pasa la información al siguiente, creando un flujo de trabajo 
+              perfectamente sincronizado que nunca se detiene.
+            </p>
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+              <div className="bg-gradient-to-br from-accent/20 to-primary/20 rounded-xl p-6 shadow-2xl border border-accent/30 backdrop-blur-sm">
+                <div className="text-accent text-3xl font-bold mb-3">01</div>
+                <h3 className="text-xl font-semibold text-glow-accent mb-3">Captura</h3>
+                <p className="text-foreground/80 text-sm leading-relaxed">Detecta y califica leads automáticamente</p>
+              </div>
+              <div className="bg-gradient-to-br from-accent/20 to-primary/20 rounded-xl p-6 shadow-2xl border border-accent/30 backdrop-blur-sm">
+                <div className="text-accent text-3xl font-bold mb-3">02</div>
+                <h3 className="text-xl font-semibold text-glow-accent mb-3">Convierte</h3>
+                <p className="text-foreground/80 text-sm leading-relaxed">Optimiza cada interacción para cerrar más</p>
+              </div>
+              <div className="bg-gradient-to-br from-accent/20 to-primary/20 rounded-xl p-6 shadow-2xl border border-accent/30 backdrop-blur-sm">
+                <div className="text-accent text-3xl font-bold mb-3">03</div>
+                <h3 className="text-xl font-semibold text-glow-accent mb-3">Atiende</h3>
+                <p className="text-foreground/80 text-sm leading-relaxed">Responde 24/7 con información precisa</p>
+              </div>
+              <div className="bg-gradient-to-br from-accent/20 to-primary/20 rounded-xl p-6 shadow-2xl border border-accent/30 backdrop-blur-sm">
+                <div className="text-accent text-3xl font-bold mb-3">04</div>
+                <h3 className="text-xl font-semibold text-glow-accent mb-3">Opera</h3>
+                <p className="text-foreground/80 text-sm leading-relaxed">Mantiene todo funcionando sin interrupciones</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      
       <div id="scrollytelling">
         <StickyFunnelLayoutEmpresas panels={panels} />
         

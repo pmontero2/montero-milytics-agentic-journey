@@ -8,7 +8,8 @@ export const ScrollProgressEmpresas = () => {
   const sections = [
     { id: "hero", name: "Inicio", icon: "🏢" },
     { id: "concepto", name: "Concepto", icon: "🧠" },
-    { id: "scrollytelling", name: "Servicios", icon: "⚡" },
+    { id: "servicios", name: "Servicios", icon: "⚡" },
+    { id: "scrollytelling", name: "Detalles", icon: "🔍" },
     { id: "workflow", name: "Proceso", icon: "🔄" },
     { id: "faq", name: "FAQ", icon: "💬" },
     { id: "contact", name: "Contacto", icon: "📞" }

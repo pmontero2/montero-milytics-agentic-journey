@@ -2,6 +2,7 @@ import { ArrowDown, Sparkles, Building2, BookOpen, ExternalLink } from "lucide-r
 import { Button } from "./ui/button";
 import { useState } from "react";
 import { FloatingContactForm } from "./FloatingContactForm";
+import agentesImage from "@/assets/agentes.webp";
 
 export const HeroEmpresas = () => {
   const [isFormOpen, setIsFormOpen] = useState(false);
@@ -31,6 +32,15 @@ export const HeroEmpresas = () => {
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-64 h-64 bg-accent/50 rounded-full blur-2xl animate-pulse delay-500"></div>
       </div>
 
+      {/* Imagen de fondo de agentes */}
+      <div className="absolute inset-0 opacity-20">
+        <img 
+          src={agentesImage} 
+          alt="Agentes trabajando en equipo" 
+          className="w-full h-full object-cover object-center"
+        />
+      </div>
+
       {/* Floating Elements */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
         <div className="absolute top-20 left-10 w-2 h-2 bg-accent rounded-full animate-ping delay-1000"></div>
@@ -46,7 +56,7 @@ export const HeroEmpresas = () => {
             Empresas Agénticas
           </h1>
           
-          <h2 className="text-lg sm:text-2xl md:text-3xl lg:text-4xl font-semibold mb-3 sm:mb-4 text-primary">
+          <h2 className="text-lg sm:text-2xl md:text-3xl lg:text-4xl font-semibold mb-3 sm:mb-4 text-white">
             Automatización Inteligente para tu Negocio
           </h2>
           
@@ -69,7 +79,7 @@ export const HeroEmpresas = () => {
             onClick={goToMilytics}
             variant="outline"
             size="lg"
-            className="border-accent/30 text-white hover:bg-accent/10 font-semibold text-base sm:text-lg px-6 sm:px-8 py-4 sm:py-6 rounded-full hover:scale-105 transition-all duration-300 min-h-[48px] sm:min-h-[56px] group w-full sm:w-auto"
+            className="border-accent/30 text-white hover:bg-white hover:text-gray-900 font-semibold text-base sm:text-lg px-6 sm:px-8 py-4 sm:py-6 rounded-full hover:scale-105 transition-all duration-300 min-h-[48px] sm:min-h-[56px] group w-full sm:w-auto"
           >
             <ExternalLink className="mr-2 h-4 w-4 sm:h-5 sm:w-5 group-hover:scale-110 transition-transform duration-300" />
             Conocer Milytics
