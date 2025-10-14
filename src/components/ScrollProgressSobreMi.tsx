@@ -1,19 +1,16 @@
 import { useEffect, useState } from "react";
 
-export const ScrollProgress = () => {
+export const ScrollProgressSobreMi = () => {
   const [activeSection, setActiveSection] = useState(0);
   
-  // Todas las secciones de la página Empresas Agénticas
+  // Secciones específicas de la página Sobre Mi
   const sections = [
-    { id: "hero", name: "Inicio", icon: "🏠" },
-    { id: "concept", name: "Concepto", icon: "💡" },
-    { id: "scrollytelling", name: "Leads", icon: "🎯" },
-    { id: "scrollytelling", name: "Conversión", icon: "📈" },
-    { id: "scrollytelling", name: "Respuesta", icon: "⚡" },
-    { id: "scrollytelling", name: "Operaciones", icon: "🔧" },
-    { id: "workflow", name: "Proceso", icon: "🔄" },
-    { id: "faq", name: "FAQ", icon: "❓" },
-    { id: "contact", name: "Contacto", icon: "📞" }
+    { id: "hero", name: "Presentación", icon: "👋" },
+    { id: "personal", name: "Personal", icon: "🎯" },
+    { id: "trajectory", name: "Trayectoria", icon: "📈" },
+    { id: "vision-purpose", name: "Propósito", icon: "🎯" },
+    { id: "what-i-do", name: "Servicios", icon: "⚙️" },
+    { id: "cta", name: "Contacto", icon: "📞" }
   ];
 
   useEffect(() => {
@@ -21,33 +18,30 @@ export const ScrollProgress = () => {
       const scrollPosition = window.scrollY;
       const windowHeight = window.innerHeight;
       
-      // Detectar qué sección está visible
+      // Detectar qué sección está visible usando los elementos reales
       let currentSection = 0;
       
-      // Hero section (0)
-      if (scrollPosition < windowHeight * 0.5) {
-        currentSection = 0;
-      }
-      // Concepto (1)
-      else if (scrollPosition < windowHeight * 1.5) {
+      // Buscar elementos por ID para detección más precisa
+      const personalElement = document.getElementById('personal');
+      const trajectoryElement = document.getElementById('trajectory');
+      const visionElement = document.getElementById('vision-purpose');
+      const whatIDoElement = document.getElementById('what-i-do');
+      const ctaElement = document.getElementById('cta');
+      
+      if (personalElement && scrollPosition >= personalElement.offsetTop - windowHeight * 0.3) {
         currentSection = 1;
       }
-      // Secciones de scrollytelling (2-5)
-      else if (scrollPosition < windowHeight * 5.5) {
-        const sectionIndex = Math.floor((scrollPosition - windowHeight * 1.5) / windowHeight) + 2;
-        currentSection = Math.max(2, Math.min(5, sectionIndex));
+      if (trajectoryElement && scrollPosition >= trajectoryElement.offsetTop - windowHeight * 0.3) {
+        currentSection = 2;
       }
-      // Workflow/Proceso (6)
-      else if (scrollPosition < windowHeight * 6.5) {
-        currentSection = 6;
+      if (visionElement && scrollPosition >= visionElement.offsetTop - windowHeight * 0.3) {
+        currentSection = 3;
       }
-      // FAQ (7)
-      else if (scrollPosition < windowHeight * 7.5) {
-        currentSection = 7;
+      if (whatIDoElement && scrollPosition >= whatIDoElement.offsetTop - windowHeight * 0.3) {
+        currentSection = 4;
       }
-      // Contacto (8)
-      else {
-        currentSection = 8;
+      if (ctaElement && scrollPosition >= ctaElement.offsetTop - windowHeight * 0.3) {
+        currentSection = 5;
       }
       
       setActiveSection(currentSection);
@@ -68,32 +62,20 @@ export const ScrollProgress = () => {
       window.scrollTo({ top: 0, behavior: "smooth" });
       return;
     } else if (index === 1) {
-      // Concepto - buscar AgenticConcept
-      targetElement = document.getElementById('agentic-concept');
-    } else if (index >= 2 && index <= 5) {
-      // Secciones de scrollytelling - usar IDs específicos de paneles
-      const panelId = `panel-${index - 2}`;
-      targetElement = document.getElementById(panelId);
-      
-      // Fallback: buscar por data-panel-index
-      if (!targetElement) {
-        targetElement = document.querySelector(`[data-panel-index="${index - 2}"]`);
-      }
-      
-      // Fallback final: buscar el contenedor scrollytelling
-      if (!targetElement) {
-        targetElement = document.getElementById('scrollytelling');
-      }
-    } else if (index === 6) {
-      // Workflow/Proceso
-      targetElement = document.getElementById('workflow') ||
-                     document.querySelector('.workflow-section');
-    } else if (index === 7) {
-      // FAQ
-      targetElement = document.getElementById('faq');
-    } else if (index === 8) {
-      // Contacto
-      targetElement = document.getElementById('contact');
+      // Sección Personal - usar el ID que añadimos
+      targetElement = document.getElementById('personal');
+    } else if (index === 2) {
+      // Trayectoria - usar el ID del componente TrajectoryExperience
+      targetElement = document.getElementById('trajectory');
+    } else if (index === 3) {
+      // Visión y Propósito - usar el ID del componente VisionPurpose
+      targetElement = document.getElementById('vision-purpose');
+    } else if (index === 4) {
+      // Qué hago/Servicios - usar el ID del componente WhatIDo
+      targetElement = document.getElementById('what-i-do');
+    } else if (index === 5) {
+      // CTA/Contacto - usar el ID que añadimos
+      targetElement = document.getElementById('cta');
     }
     
     if (targetElement) {
@@ -107,9 +89,20 @@ export const ScrollProgress = () => {
         behavior: "smooth" 
       });
     } else {
-      // Fallback: usar cálculo aproximado
+      // Fallback: usar cálculo aproximado basado en la estructura real
       const windowHeight = window.innerHeight;
-      const targetScroll = index * windowHeight * 0.8;
+      let targetScroll = 0;
+      
+      switch(index) {
+        case 0: targetScroll = 0; break;
+        case 1: targetScroll = windowHeight * 1.2; break;
+        case 2: targetScroll = windowHeight * 2.5; break;
+        case 3: targetScroll = windowHeight * 4.0; break;
+        case 4: targetScroll = windowHeight * 5.5; break;
+        case 5: targetScroll = windowHeight * 7.0; break;
+        default: targetScroll = index * windowHeight * 0.8;
+      }
+      
       window.scrollTo({ top: targetScroll, behavior: "smooth" });
     }
   };
