@@ -56,7 +56,16 @@ export const FloatingContactForm = ({ isOpen, onClose, source }: FloatingContact
       };
 
       // Enviar al webhook sin esperar respuesta
-      fetch("https://dev.milytics.io/webhook/fd96ed9d-73b8-4e68-88c5-ce1e9b264c8f", {
+      const webhookUrl = import.meta.env.WEBHOOK;
+      
+      if (!webhookUrl) {
+        if (import.meta.env.DEV) {
+          console.error("Webhook URL no configurada");
+        }
+        return;
+      }
+
+      fetch(webhookUrl, {
         method: "POST",
         mode: "no-cors",
         headers: {
@@ -81,7 +90,9 @@ export const FloatingContactForm = ({ isOpen, onClose, source }: FloatingContact
       }, 2000);
 
     } catch (error) {
-      console.error("Error al enviar formulario:", error);
+      if (import.meta.env.DEV) {
+        console.error("Error al enviar formulario:", error);
+      }
     } finally {
       setIsSubmitting(false);
     }

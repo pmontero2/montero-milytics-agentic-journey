@@ -14,4 +14,11 @@ export default defineConfig(({ mode }) => ({
       "@": path.resolve(__dirname, "./src"),
     },
   },
+  define: {
+    // Definir variables de entorno para el cliente
+    __DEV__: mode === 'development',
+    // Exponer solo variables específicas que son seguras para el cliente
+    'import.meta.env.WEBHOOK': JSON.stringify(process.env.WEBHOOK),
+  },
+  envPrefix: 'VITE_', // Solo variables que empiecen con VITE_ serán expuestas al cliente
 }));
