@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Menu, X, Instagram, Linkedin } from "lucide-react";
+import { Menu, X } from "lucide-react";
 import { Button } from "./ui/button";
 import { cn } from "@/lib/utils";
 import { useNavigate, useLocation } from "react-router-dom";
@@ -64,28 +64,6 @@ export const Navbar = () => {
             ))}
           </div>
 
-          {/* Social Links */}
-          <div className="hidden md:flex items-center space-x-2">
-            <a
-              href="https://www.instagram.com/brinz_._"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="p-2 text-white/70 hover:text-accent transition-colors duration-300 hover:scale-110"
-              aria-label="Instagram"
-            >
-              <Instagram className="h-4 w-4" />
-            </a>
-            <a
-              href="https://www.linkedin.com/in/bmonterop"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="p-2 text-white/70 hover:text-accent transition-colors duration-300 hover:scale-110"
-              aria-label="LinkedIn"
-            >
-              <Linkedin className="h-4 w-4" />
-            </a>
-          </div>
-
           {/* Mobile Menu Button */}
           <button
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
@@ -126,30 +104,6 @@ export const Navbar = () => {
                 {item.label}
               </button>
             ))}
-            
-            {/* Social Links Mobile */}
-            <div className="pt-4 border-t border-accent/10">
-              <div className="flex items-center justify-center space-x-6">
-                <a
-                  href="https://www.instagram.com/brinz_._"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="p-3 text-white/70 hover:text-accent transition-colors duration-300 hover:scale-110"
-                  aria-label="Instagram"
-                >
-                  <Instagram className="h-5 w-5" />
-                </a>
-                <a
-                  href="https://www.linkedin.com/in/bmonterop"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="p-3 text-white/70 hover:text-accent transition-colors duration-300 hover:scale-110"
-                  aria-label="LinkedIn"
-                >
-                  <Linkedin className="h-5 w-5" />
-                </a>
-              </div>
-            </div>
           </div>
         </div>
       </div>
