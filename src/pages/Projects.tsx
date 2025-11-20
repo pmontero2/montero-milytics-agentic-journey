@@ -233,6 +233,7 @@ const ProjectContent = ({
         };
     }, [carouselApi, setCurrent]);
 
+    
     return (
         <>
             {/* Hero Section */}
