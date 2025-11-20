@@ -4,21 +4,22 @@
 
 ### WEBHOOK
 - **Nombre**: `WEBHOOK`
-- **Valor**: `https://dev.milytics.io/webhook/fd96ed9d-73b8-4e68-88c5-ce1e9b264c8f`
+- **Valor**: `tu-webhook-url-aqui` (ejemplo: `https://dev.milytics.io/webhook/tu-id-aqui`)
 - **Descripción**: URL del webhook para procesar formularios de contacto
 - **Seguridad**: ✅ NO se expone al navegador (más seguro)
+- **Nota**: Obtén esta URL desde tu panel de Vercel o configuración de webhooks
 
 ## Variables Opcionales (Seguras para el Cliente)
 
 ### VITE_GA_ID
 - **Nombre**: `VITE_GA_ID`
-- **Valor**: `G-17Y4S0HQ6Q`
+- **Valor**: `tu-ga-id-aqui` (ejemplo: `G-XXXXXXXXXX`)
 - **Descripción**: ID de Google Analytics
 - **Seguridad**: ⚠️ Se expone al navegador (pero es seguro)
 
 ### VITE_SITE_URL
 - **Nombre**: `VITE_SITE_URL`
-- **Valor**: `https://www.bmontero.com`
+- **Valor**: `https://www.bmontero.com` (o tu dominio)
 - **Descripción**: URL base del sitio web
 - **Seguridad**: ⚠️ Se expone al navegador (pero es seguro)
 
