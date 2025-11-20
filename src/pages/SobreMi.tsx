@@ -9,7 +9,9 @@ import { StickyCTA } from "@/components/StickyCTA";
 import { useScrollToTop } from "@/hooks/use-scroll-to-top";
 import { Button } from "@/components/ui/button";
 import { useNavigate } from "react-router-dom";
-import { ArrowRight, Mail, MapPin, Calendar, Wrench, Heart, Code, Brain, Download } from "lucide-react";
+import { ArrowRight, Mail, MapPin, Calendar, Wrench, Heart, Code, Brain } from "lucide-react";
+import { useState } from "react";
+import { CVModal } from "@/components/CVModal";
 import brinziImage from "@/assets/brinzi.webp";
 import mufiImage from "@/assets/mufi.webp";
 import corsitaImage from "@/assets/corsita.webp";
@@ -18,32 +20,24 @@ import agente4Image from "@/assets/agente4.webp";
 const SobreMi = () => {
   useScrollToTop();
   const navigate = useNavigate();
+  const [isCVModalOpen, setIsCVModalOpen] = useState(false);
 
   const goToContact = () => {
     window.location.href = "mailto:bmontero@milytics.io";
   };
 
-  const downloadCV = () => {
-    const link = document.createElement('a');
-    link.href = '/CV Brian Montero 2025V3 ESP.pdf';
-    link.download = 'CV Brian Montero 2025V3 ESP.pdf';
-    document.body.appendChild(link);
-    link.click();
-    document.body.removeChild(link);
-  };
-
   return (
     <div className="overflow-y-auto">
       <Navbar />
-      
+
       {/* Hero Section */}
       <section className="min-h-screen flex items-center justify-center relative overflow-hidden gradient-primary pt-16">
         <div className="container mx-auto px-4 sm:px-6 text-center relative z-10">
           {/* Profile Image */}
           <div className="mb-6 sm:mb-8 flex justify-center">
             <div className="relative">
-              <img 
-                src={brinziImage} 
+              <img
+                src={brinziImage}
                 alt="Brian Montero"
                 className="w-28 h-28 sm:w-32 sm:h-32 md:w-40 md:h-40 rounded-full border-4 border-accent/30 shadow-2xl shadow-accent/25 object-cover"
               />
@@ -56,16 +50,16 @@ const SobreMi = () => {
           <h1 className="text-3xl sm:text-4xl md:text-6xl lg:text-7xl font-bold mb-4 sm:mb-6 text-glow-accent leading-tight">
             Brian Montero
           </h1>
-          
+
           <div className="text-base sm:text-lg md:text-xl text-foreground/90 max-w-4xl mx-auto leading-relaxed mb-6 sm:mb-8">
             <p className="mb-4 sm:mb-6">
               Ingeniero Civil Telemático especializado en <span className="text-accent font-semibold">Inteligencia Artificial empresarial</span> y automatización de procesos.
             </p>
-            
+
             <p className="mb-4 sm:mb-6">
               Fundador de <span className="text-accent font-semibold">Milytics</span>, donde transformo empresas tradicionales en <span className="text-accent font-semibold">Empresas Agénticas</span> mediante la implementación estratégica de agentes de IA.
             </p>
-            
+
             <p className="mb-6 sm:mb-8">
               Mi misión es hacer que la tecnología <span className="text-accent font-semibold">impulse a las personas</span>, no que las reemplace. Trabajo directamente con equipos ejecutivos para crear soluciones que generen resultados medibles y sostenibles.
             </p>
@@ -90,11 +84,12 @@ const SobreMi = () => {
           {/* CTA Buttons */}
           <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center">
             <Button
-              onClick={downloadCV}
+              onClick={() => {
+                setIsCVModalOpen(true);
+              }}
               className="bg-accent hover:bg-accent/90 text-accent-foreground font-semibold px-6 sm:px-8 py-3 rounded-full hover:scale-105 hover:shadow-lg hover:shadow-accent/25 transition-all duration-300 min-h-[48px] sm:min-h-[56px] w-full sm:w-auto"
             >
               Descargar CV
-              <Download className="ml-2 h-4 w-4" />
             </Button>
             <Button
               onClick={goToContact}
@@ -118,9 +113,9 @@ const SobreMi = () => {
             <p className="text-base sm:text-lg text-white/80 mb-8 sm:mb-12">
               Cuando no estoy diseñando agentes de IA, me encuentras...
             </p>
-            
+
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
-              <div 
+              <div
                 className="relative rounded-xl p-4 sm:p-6 border border-sky-500/30 hover:scale-105 transition-all duration-300 overflow-hidden"
                 style={{
                   backgroundImage: `linear-gradient(rgba(14, 165, 233, 0.3), rgba(2, 132, 199, 0.3)), url(${corsitaImage})`,
@@ -139,8 +134,8 @@ const SobreMi = () => {
                   </p>
                 </div>
               </div>
-              
-              <div 
+
+              <div
                 className="relative rounded-xl p-4 sm:p-6 border border-emerald-500/30 hover:scale-105 transition-all duration-300 overflow-hidden"
                 style={{
                   backgroundImage: `linear-gradient(rgba(16, 185, 129, 0.3), rgba(5, 150, 105, 0.3)), url(${mufiImage})`,
@@ -159,8 +154,8 @@ const SobreMi = () => {
                   </p>
                 </div>
               </div>
-              
-              <div 
+
+              <div
                 className="relative rounded-xl p-4 sm:p-6 border border-indigo-500/30 hover:scale-105 transition-all duration-300 overflow-hidden sm:col-span-2 lg:col-span-1"
                 style={{
                   backgroundImage: `linear-gradient(rgba(99, 102, 241, 0.3), rgba(67, 56, 202, 0.3)), url(${agente4Image})`,
@@ -188,15 +183,16 @@ const SobreMi = () => {
       <TrajectoryExperience />
       <VisionPurpose hideCTA={true} />
       <WhatIDo />
-      
+
       {/* Final CTA Section */}
       <section id="cta">
         <CTASection />
       </section>
-      
+
       <Footer />
       <ScrollProgressSobreMi />
       <StickyCTA />
+      <CVModal isOpen={isCVModalOpen} onClose={() => setIsCVModalOpen(false)} />
     </div>
   );
 };

@@ -117,4 +117,39 @@ html {
       transform: translateY(0);
     }
   }
+
+  @keyframes flowProgress {
+    0%, 100% {
+      background-color: hsl(0 0% 0%);
+      box-shadow: 0 0 0 0 hsl(45 100% 50% / 0);
+    }
+    20% {
+      background-color: hsl(45 100% 50%);
+      box-shadow: 0 0 12px 4px hsl(45 100% 50% / 0.6);
+    }
+    40% {
+      background-color: hsl(0 0% 0%);
+      box-shadow: 0 0 0 0 hsl(45 100% 50% / 0);
+    }
+  }
+
+  .animate-flow-progress {
+    animation: flowProgress 6s ease-in-out infinite;
+  }
+
+  .animate-flow-progress-delay-1 {
+    animation: flowProgress 6s ease-in-out infinite;
+    animation-delay: 1.5s;
+  }
+
+  .animate-flow-progress-delay-2 {
+    animation: flowProgress 6s ease-in-out infinite;
+    animation-delay: 3s;
+  }
+
+  .animate-flow-progress-delay-10 {
+    animation: flowProgress 6s ease-in-out infinite;
+    animation-delay: 4.5s;
+  }
 }
+

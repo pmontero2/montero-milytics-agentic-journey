@@ -1,12 +1,13 @@
 import { useState } from "react";
 import { Menu, X } from "lucide-react";
-import { Button } from "./ui/button";
 import { cn } from "@/lib/utils";
 import { useNavigate, useLocation } from "react-router-dom";
 import logoBmontero from "@/assets/logo-bmontero.png";
+import { CVModal } from "./CVModal";
 
 export const Navbar = () => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [isCVModalOpen, setIsCVModalOpen] = useState(false);
   const navigate = useNavigate();
   const location = useLocation();
 
@@ -25,6 +26,7 @@ export const Navbar = () => {
   const navItems = [
     { label: "Inicio", action: () => navigate("/") },
     { label: "Empresas Agénticas", action: () => navigate("/empresas-agenticas") },
+    { label: "Proyectos", action: () => navigate("/proyectos") },
     { label: "Sobre Mí", action: () => navigate("/sobre-mi") },
   ];
 
@@ -53,8 +55,9 @@ export const Navbar = () => {
                 className={cn(
                   "transition-colors duration-300 font-medium text-sm sm:text-base",
                   (item.label === "Inicio" && location.pathname === "/") ||
-                  (item.label === "Empresas Agénticas" && location.pathname === "/empresas-agenticas") ||
-                  (item.label === "Sobre Mí" && location.pathname === "/sobre-mi")
+                    (item.label === "Empresas Agénticas" && location.pathname === "/empresas-agenticas") ||
+                    (item.label === "Proyectos" && location.pathname === "/proyectos") ||
+                    (item.label === "Sobre Mí" && location.pathname === "/sobre-mi")
                     ? "text-accent"
                     : "text-white/80 hover:text-accent"
                 )}
@@ -62,6 +65,14 @@ export const Navbar = () => {
                 {item.label}
               </button>
             ))}
+            <button
+              onClick={() => {
+                setIsCVModalOpen(true);
+              }}
+              className="transition-colors duration-300 font-medium text-sm sm:text-base text-white/80 hover:text-accent whitespace-nowrap"
+            >
+              CV
+            </button>
           </div>
 
           {/* Mobile Menu Button */}
@@ -95,8 +106,9 @@ export const Navbar = () => {
                 className={cn(
                   "block w-full text-left transition-colors duration-300 font-medium py-2 text-sm sm:text-base",
                   (item.label === "Inicio" && location.pathname === "/") ||
-                  (item.label === "Empresas Agénticas" && location.pathname === "/empresas-agenticas") ||
-                  (item.label === "Sobre Mí" && location.pathname === "/sobre-mi")
+                    (item.label === "Empresas Agénticas" && location.pathname === "/empresas-agenticas") ||
+                    (item.label === "Proyectos" && location.pathname === "/proyectos") ||
+                    (item.label === "Sobre Mí" && location.pathname === "/sobre-mi")
                     ? "text-accent"
                     : "text-white/80 hover:text-accent"
                 )}
@@ -104,9 +116,18 @@ export const Navbar = () => {
                 {item.label}
               </button>
             ))}
+            <button
+              onClick={() => {
+                setIsCVModalOpen(true);
+              }}
+              className="block w-full text-left transition-colors duration-300 font-medium py-2 text-sm sm:text-base text-white/80 hover:text-accent"
+            >
+              CV
+            </button>
           </div>
         </div>
       </div>
+      <CVModal isOpen={isCVModalOpen} onClose={() => setIsCVModalOpen(false)} />
     </nav>
   );
 };

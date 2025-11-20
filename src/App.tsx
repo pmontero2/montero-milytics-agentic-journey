@@ -9,6 +9,7 @@ import SobreMi from "./pages/SobreMi";
 import PrivacyPolicy from "./pages/PrivacyPolicy";
 import TermsOfService from "./pages/TermsOfService";
 import NotFound from "./pages/NotFound";
+import Projects from "./pages/Projects";
 
 const queryClient = new QueryClient();
 
@@ -24,6 +25,7 @@ const App = () => (
           <Route path="/sobre-mi" element={<SobreMi />} />
           <Route path="/politica-privacidad" element={<PrivacyPolicy />} />
           <Route path="/terminos-servicio" element={<TermsOfService />} />
+          <Route path="/proyectos" element={<Projects />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
         </Routes>
