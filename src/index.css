@@ -151,5 +151,14 @@ html {
     animation: flowProgress 6s ease-in-out infinite;
     animation-delay: 4.5s;
   }
+
+  .scrollbar-hide {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+
+  .scrollbar-hide::-webkit-scrollbar {
+    display: none;
+  }
 }
 

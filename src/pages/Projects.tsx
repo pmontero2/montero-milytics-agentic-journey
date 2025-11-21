@@ -30,6 +30,7 @@ import {
     ClipboardList
 } from "lucide-react";
 import { ProjectContactForm } from "@/components/ProjectContactForm";
+import { ImageGalleryModal } from "@/components/ImageGalleryModal";
 
 // Datos del proyecto ConstructFlow
 const constructFlowData = {
@@ -204,6 +205,7 @@ interface ProjectContentProps {
     setCurrent: (index: number) => void;
     autoplayPlugin: React.MutableRefObject<any>;
     onContactClick: () => void;
+    onImageClick?: (index: number) => void;
 }
 
 const ProjectContent = ({ 
@@ -213,7 +215,8 @@ const ProjectContent = ({
     current, 
     setCurrent, 
     autoplayPlugin,
-    onContactClick
+    onContactClick,
+    onImageClick
 }: ProjectContentProps) => {
     useEffect(() => {
         if (!carouselApi) {
@@ -334,7 +337,14 @@ const ProjectContent = ({
                             <CarouselContent>
                                 {project.galleryImages.map((image, index) => (
                                     <CarouselItem key={index} className="basis-full">
-                                        <div className="group relative rounded-2xl overflow-hidden bg-zinc-900 border border-accent/50 transition-all duration-500 shadow-2xl aspect-video">
+                                        <div 
+                                            className="group relative rounded-2xl overflow-hidden bg-zinc-900 border border-accent/50 transition-all duration-500 shadow-2xl aspect-video cursor-pointer lg:cursor-default"
+                                            onClick={() => {
+                                                if (onImageClick && window.innerWidth < 1024) {
+                                                    onImageClick(index);
+                                                }
+                                            }}
+                                        >
                                             <img
                                                 src={image.src}
                                                 alt={image.alt}
@@ -343,6 +353,14 @@ const ProjectContent = ({
                                             />
                                             <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-transparent to-transparent flex flex-col justify-end p-4 md:p-8">
                                                 <p className="text-white font-bold text-lg md:text-2xl">{image.title}</p>
+                                            </div>
+                                            {/* Mobile overlay hint */}
+                                            <div className="lg:hidden absolute inset-0 flex items-center justify-center bg-black/0 active:bg-black/10 transition-colors">
+                                                <div className="opacity-60 active:opacity-100 transition-opacity bg-black/60 rounded-full p-2.5">
+                                                    <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0zM10 7v6m3-3H7" />
+                                                    </svg>
+                                                </div>
                                             </div>
                                         </div>
                                     </CarouselItem>
@@ -426,6 +444,8 @@ const Projects = () => {
     const [carouselApi, setCarouselApi] = useState<any>();
     const [current, setCurrent] = useState(0);
     const [isContactModalOpen, setIsContactModalOpen] = useState(false);
+    const [isImageModalOpen, setIsImageModalOpen] = useState(false);
+    const [imageModalIndex, setImageModalIndex] = useState(0);
     const autoplayPlugin = useRef(
         Autoplay({
             delay: 4000,
@@ -460,22 +480,22 @@ const Projects = () => {
                         Explora los <span className="text-accent">Proyectos</span>
                     </h2>
                     <Tabs value={selectedProject} onValueChange={setSelectedProject} className="w-full max-w-full md:max-w-4xl">
-                        <TabsList className="grid w-full grid-cols-3 bg-zinc-900/50 border border-white/10">
+                        <TabsList className="grid w-full grid-cols-3 bg-zinc-900/50 border border-white/10 gap-2 p-1.5">
                             <TabsTrigger 
                                 value="constructflow" 
-                                className="data-[state=active]:bg-accent data-[state=active]:text-black data-[state=active]:font-semibold text-sm md:text-base px-2 py-2 md:px-4 md:py-3"
+                                className="data-[state=active]:bg-accent data-[state=active]:text-black data-[state=active]:font-semibold data-[state=inactive]:bg-zinc-800/60 data-[state=inactive]:text-white/90 data-[state=inactive]:border data-[state=inactive]:border-white/20 data-[state=inactive]:hover:bg-zinc-700/80 data-[state=inactive]:hover:border-accent/50 data-[state=inactive]:hover:text-white data-[state=inactive]:hover:scale-105 text-sm md:text-base px-2 py-2 md:px-4 md:py-3 transition-all duration-300 font-medium"
                             >
                                 ConstructFlow
                             </TabsTrigger>
                             <TabsTrigger 
                                 value="autoppt"
-                                className="data-[state=active]:bg-accent data-[state=active]:text-black data-[state=active]:font-semibold text-sm md:text-base px-2 py-2 md:px-4 md:py-3"
+                                className="data-[state=active]:bg-accent data-[state=active]:text-black data-[state=active]:font-semibold data-[state=inactive]:bg-zinc-800/60 data-[state=inactive]:text-white/90 data-[state=inactive]:border data-[state=inactive]:border-white/20 data-[state=inactive]:hover:bg-zinc-700/80 data-[state=inactive]:hover:border-accent/50 data-[state=inactive]:hover:text-white data-[state=inactive]:hover:scale-105 text-sm md:text-base px-2 py-2 md:px-4 md:py-3 transition-all duration-300 font-medium"
                             >
                                 AutoPPT
                             </TabsTrigger>
                             <TabsTrigger 
                                 value="healthadmin"
-                                className="data-[state=active]:bg-accent data-[state=active]:text-black data-[state=active]:font-semibold text-sm md:text-base px-2 py-2 md:px-4 md:py-3"
+                                className="data-[state=active]:bg-accent data-[state=active]:text-black data-[state=active]:font-semibold data-[state=inactive]:bg-zinc-800/60 data-[state=inactive]:text-white/90 data-[state=inactive]:border data-[state=inactive]:border-white/20 data-[state=inactive]:hover:bg-zinc-700/80 data-[state=inactive]:hover:border-accent/50 data-[state=inactive]:hover:text-white data-[state=inactive]:hover:scale-105 text-sm md:text-base px-2 py-2 md:px-4 md:py-3 transition-all duration-300 font-medium"
                             >
                                 HealthAdmin
                             </TabsTrigger>
@@ -493,6 +513,10 @@ const Projects = () => {
                             setCurrent={setCurrent}
                             autoplayPlugin={autoplayPlugin}
                             onContactClick={() => setIsContactModalOpen(true)}
+                            onImageClick={(index) => {
+                                setImageModalIndex(index);
+                                setIsImageModalOpen(true);
+                            }}
                         />
                     </TabsContent>
                 </Tabs>
@@ -504,6 +528,12 @@ const Projects = () => {
                 onClose={() => setIsContactModalOpen(false)}
                 projectName={currentProject.name}
                 projectDescription={currentProject.projectDescription}
+            />
+            <ImageGalleryModal
+                isOpen={isImageModalOpen}
+                onClose={() => setIsImageModalOpen(false)}
+                images={currentProject.galleryImages}
+                initialIndex={imageModalIndex}
             />
         </div>
     );
