@@ -118,3 +118,4 @@ Cada archivo YAML contiene:
 
 **Última actualización**: 2025-01-XX
 
+
