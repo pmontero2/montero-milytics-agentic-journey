@@ -16,8 +16,8 @@ export const CVModal = ({ isOpen, onClose }: CVModalProps) => {
 
   const downloadCV = (language: "ESP" | "ENG") => {
     const filename = language === "ESP"
-      ? "CV Brian Montero 2025 ESP.pdf"
-      : "CV Brian Montero 2025 ENG.pdf";
+      ? "CV_BRIAN_MONTERO_ESP_2026.pdf"
+      : "CV_BRIAN_MONTERO_ENG_2026.pdf";
     const link = document.createElement('a');
     link.href = `/${filename}`;
     link.download = filename;

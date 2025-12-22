@@ -1,0 +1,163 @@
+# CV optimizado para Milytics
+# Formato: YAML
+# Versión: 1.0
+# Enfoque: Destacar experiencia y proyectos relacionados con Milytics
+
+personal:
+  nombre: "Brian Montero"
+  titulo: "Especialista en IA y Automatización Empresarial - Milytics"
+  email: "brian@bmontero.com"
+  telefono: "+34 XXX XXX XXX"
+  ubicacion: "España"
+  linkedin: "linkedin.com/in/brianmontero"
+  github: "github.com/bmontero"
+  website: "www.bmontero.com"
+
+resumen:
+  profesional: |
+    Especialista en IA y Automatización Empresarial en Milytics, enfocado en 
+    transformar procesos empresariales mediante inteligencia artificial. 
+    Experto en desarrollo de agentes de IA personalizados, automatización de 
+    workflows y optimización de operaciones empresariales con resultados medibles.
+
+experiencia:
+  - empresa: "Milytics"
+    puesto: "Especialista en IA y Automatización"
+    fecha_inicio: "2020"
+    fecha_fin: "Presente"
+    ubicacion: "España"
+    responsabilidades:
+      - Diseño e implementación de agentes de IA para empresas
+      - Automatización de procesos empresariales complejos
+      - Desarrollo de sistemas de generación de leads automatizada
+      - Optimización de conversión mediante IA y análisis de datos
+      - Implementación de sistemas de atención 24/7 con IA
+      - Consultoría en transformación digital con IA
+    logros:
+      - Implementación exitosa de pilotos en semanas
+      - Mejora medible de KPIs en múltiples clientes
+      - Desarrollo de soluciones escalables y reutilizables
+      - Optimización de procesos que resultaron en ahorro de tiempo y costos
+    tecnologias_usadas:
+      - "Python"
+      - "JavaScript/TypeScript"
+      - "React"
+      - "Node.js"
+      - "APIs y Webhooks"
+      - "Machine Learning"
+      - "NLP (Procesamiento de Lenguaje Natural)"
+      - "Integración de Sistemas"
+
+proyectos_milytics:
+  - nombre: "Sistema de Agentes de IA"
+    descripcion: |
+      Desarrollo de agentes de IA personalizados para automatizar tareas 
+      empresariales específicas, mejorando eficiencia y reduciendo costos operativos.
+    tecnologias:
+      - "Python"
+      - "Machine Learning"
+      - "NLP"
+      - "APIs"
+    resultados:
+      - "Reducción del 40% en tiempo de procesamiento"
+      - "Mejora del 25% en precisión"
+      - "Implementación en múltiples clientes"
+    fecha: "2023-2024"
+
+  - nombre: "Automatización de Generación de Leads"
+    descripcion: |
+      Sistema automatizado para generación y cualificación de leads mediante IA, 
+      integrado con CRM y sistemas de marketing.
+    tecnologias:
+      - "Python"
+      - "APIs"
+      - "Webhooks"
+      - "Integración CRM"
+    resultados:
+      - "Aumento del 60% en leads cualificados"
+      - "Reducción del 50% en tiempo de cualificación"
+    fecha: "2023-2024"
+
+  - nombre: "Optimización de Conversión con IA"
+    descripcion: |
+      Implementación de sistemas de IA para análisis y optimización de 
+      embudos de conversión en tiempo real.
+    tecnologias:
+      - "JavaScript/TypeScript"
+      - "React"
+      - "Análisis de Datos"
+      - "Machine Learning"
+    resultados:
+      - "Mejora del 35% en tasa de conversión"
+      - "Análisis en tiempo real de comportamiento"
+    fecha: "2023-2024"
+
+educacion:
+  - institucion: "Universidad"
+    titulo: "Título Universitario"
+    fecha_inicio: "2014"
+    fecha_fin: "2018"
+    ubicacion: "España"
+    descripcion: "Descripción del título o especialización"
+
+habilidades:
+  tecnicas:
+    - "Inteligencia Artificial"
+    - "Machine Learning"
+    - "Deep Learning"
+    - "NLP (Procesamiento de Lenguaje Natural)"
+    - "Automatización de Procesos"
+    - "Python"
+    - "JavaScript/TypeScript"
+    - "React"
+    - "Node.js"
+    - "APIs y Webhooks"
+    - "Integración de Sistemas"
+    - "Análisis de Datos"
+    - "SQL"
+    - "Git"
+    - "Docker"
+  
+  especializadas_milytics:
+    - "Desarrollo de Agentes de IA"
+    - "Automatización Empresarial"
+    - "Generación de Leads con IA"
+    - "Optimización de Conversión"
+    - "Análisis Predictivo"
+    - "Integración de Sistemas Empresariales"
+  
+  blandas:
+    - "Liderazgo Técnico"
+    - "Comunicación con Stakeholders"
+    - "Resolución de Problemas Complejos"
+    - "Pensamiento Estratégico"
+    - "Gestión de Proyectos"
+    - "Mentoring y Capacitación"
+
+casos_exito:
+  - cliente: "Cliente 1"
+    desafio: "Desafío específico del cliente"
+    solucion: "Solución implementada"
+    resultados:
+      - "Resultado cuantificable 1"
+      - "Resultado cuantificable 2"
+    fecha: "2023"
+
+certificaciones:
+  - nombre: "Certificación en IA"
+    emisor: "Organización"
+    fecha: "2023"
+    credencial: "CRED-12345"
+
+idiomas:
+  - idioma: "Español"
+    nivel: "Nativo"
+  - idioma: "Inglés"
+    nivel: "Avanzado (C1)"
+
+formato:
+  tipo: "Milytics"
+  enfoque: "Experiencia y proyectos en Milytics"
+  version: "1.0"
+  ultima_actualizacion: "2025-01-XX"
+
