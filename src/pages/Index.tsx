@@ -3,7 +3,7 @@ import { Hero } from "@/components/Hero";
 import { StickyFunnelLayout } from "@/components/StickyFunnelLayout";
 import { StickyCTA } from "@/components/StickyCTA";
 import { CTASection } from "@/components/CTASection";
-import { ScrollProgress } from "@/components/ScrollProgress";
+// import { ScrollProgress } from "@/components/ScrollProgress";
 import { Testimonial } from "@/components/Testimonial";
 import { Footer } from "@/components/Footer";
 import { WorkflowSection } from "@/components/WorkflowSection";
@@ -61,7 +61,7 @@ const Index = () => {
       <FAQ />
       <Footer />
       
-      <ScrollProgress />
+      {/* <ScrollProgress /> */}
       <StickyCTA />
     </div>
   );

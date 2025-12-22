@@ -4,7 +4,7 @@ import { AgenticConcept } from "@/components/AgenticConcept";
 import { StickyFunnelLayoutEmpresas } from "@/components/StickyFunnelLayoutEmpresas";
 import { StickyCTA } from "@/components/StickyCTA";
 import { CTASection } from "@/components/CTASection";
-import { ScrollProgressEmpresas } from "@/components/ScrollProgressEmpresas";
+// import { ScrollProgressEmpresas } from "@/components/ScrollProgressEmpresas";
 import { Testimonial } from "@/components/Testimonial";
 import { Footer } from "@/components/Footer";
 import { WorkflowSection } from "@/components/WorkflowSection";
@@ -146,7 +146,7 @@ const EmpresasAgenticas = () => {
       
       <Footer />
       
-      <ScrollProgressEmpresas />
+      {/* <ScrollProgressEmpresas /> */}
       <StickyCTA />
 
     </div>

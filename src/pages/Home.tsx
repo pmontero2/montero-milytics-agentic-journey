@@ -6,7 +6,7 @@ import { WhatIDo } from "@/components/WhatIDo";
 import { CommunityContent } from "@/components/CommunityContent";
 import { StickyCTA } from "@/components/StickyCTA";
 import { CTASection } from "@/components/CTASection";
-import { ScrollProgressHome } from "@/components/ScrollProgressHome";
+// import { ScrollProgressHome } from "@/components/ScrollProgressHome";
 import { Testimonial } from "@/components/Testimonial";
 import { Footer } from "@/components/Footer";
 import { WorkflowSection } from "@/components/WorkflowSection";
@@ -59,7 +59,7 @@ const Home = () => {
       <Footer />
       
       {/* Scroll Progress & Sticky Elements */}
-      <ScrollProgressHome />
+      {/* <ScrollProgressHome /> */}
       <StickyCTA />
     </div>
   );

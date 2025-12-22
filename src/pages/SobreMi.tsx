@@ -1,6 +1,6 @@
 import { Navbar } from "@/components/Navbar";
 import { Footer } from "@/components/Footer";
-import { ScrollProgressSobreMi } from "@/components/ScrollProgressSobreMi";
+// import { ScrollProgressSobreMi } from "@/components/ScrollProgressSobreMi";
 import { TrajectoryExperience } from "@/components/TrajectoryExperience";
 import { VisionPurpose } from "@/components/VisionPurpose";
 import { WhatIDo } from "@/components/WhatIDo";
@@ -190,7 +190,7 @@ const SobreMi = () => {
       </section>
 
       <Footer />
-      <ScrollProgressSobreMi />
+      {/* <ScrollProgressSobreMi /> */}
       <StickyCTA />
       <CVModal isOpen={isCVModalOpen} onClose={() => setIsCVModalOpen(false)} />
     </div>
