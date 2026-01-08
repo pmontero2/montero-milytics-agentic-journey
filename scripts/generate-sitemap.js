@@ -27,7 +27,7 @@ const PAGES = [
     description: 'Página Principal'
   },
   {
-    url: '/empresas',
+    url: '/empresas-agenticas',
     changefreq: 'weekly',
     priority: '0.9',
     description: 'Empresas Agénticas'
@@ -39,13 +39,19 @@ const PAGES = [
     description: 'Sobre Mí'
   },
   {
-    url: '/privacy',
+    url: '/proyectos',
+    changefreq: 'monthly',
+    priority: '0.7',
+    description: 'Proyectos'
+  },
+  {
+    url: '/politica-privacidad',
     changefreq: 'yearly',
     priority: '0.3',
     description: 'Política de Privacidad'
   },
   {
-    url: '/terms',
+    url: '/terminos-servicio',
     changefreq: 'yearly',
     priority: '0.3',
     description: 'Términos de Servicio'

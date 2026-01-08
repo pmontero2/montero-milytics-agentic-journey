@@ -1,5 +1,6 @@
 import { Navbar } from "@/components/Navbar";
 import { Footer } from "@/components/Footer";
+import { SEO } from "@/components/SEO";
 import React, { useEffect, useState, useRef } from "react";
 import { Badge } from "@/components/ui/badge";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
@@ -338,9 +339,9 @@ const ProjectContent = ({
                                 {project.galleryImages.map((image, index) => (
                                     <CarouselItem key={index} className="basis-full">
                                         <div 
-                                            className="group relative rounded-2xl overflow-hidden bg-zinc-900 border border-accent/50 transition-all duration-500 shadow-2xl aspect-video cursor-pointer lg:cursor-default"
+                                            className="group relative rounded-2xl overflow-hidden bg-zinc-900 border border-accent/50 transition-all duration-500 shadow-2xl aspect-video cursor-pointer"
                                             onClick={() => {
-                                                if (onImageClick && window.innerWidth < 1024) {
+                                                if (onImageClick) {
                                                     onImageClick(index);
                                                 }
                                             }}
@@ -471,31 +472,37 @@ const Projects = () => {
 
     return (
         <div className="min-h-screen bg-black text-white selection:bg-accent/30">
+            <SEO
+                title="Proyectos — Brian Montero"
+                description="Portafolio de proyectos en IA y automatización: ConstructFlow, AutoPPT, HealthAdmin. Soluciones innovadoras para empresas."
+                canonical="https://www.bmontero.com/proyectos"
+                keywords="proyectos IA, portafolio, automatización, ConstructFlow, AutoPPT, HealthAdmin, proyectos tecnológicos"
+            />
             <Navbar />
 
             <main className="pt-24 pb-20 px-4 sm:px-6 lg:px-8 container mx-auto space-y-12 md:space-y-24">
                 {/* Project Selector */}
-                <div className="flex flex-col items-center gap-3">
+                <div className="flex flex-col items-center gap-6 relative z-10">
                     <h2 className="text-2xl md:text-3xl font-bold text-white text-center">
                         Explora los <span className="text-accent">Proyectos</span>
                     </h2>
-                    <Tabs value={selectedProject} onValueChange={setSelectedProject} className="w-full max-w-full md:max-w-4xl">
-                        <TabsList className="grid w-full grid-cols-3 bg-zinc-900/50 border border-white/10 gap-2 p-1.5">
+                    <Tabs value={selectedProject} onValueChange={setSelectedProject} className="w-full max-w-full md:max-w-4xl relative z-10">
+                        <TabsList className="grid w-full grid-cols-3 bg-zinc-900/80 backdrop-blur-sm border border-white/20 rounded-lg gap-0 p-1.5 md:p-2 shadow-lg h-auto items-stretch">
                             <TabsTrigger 
                                 value="constructflow" 
-                                className="data-[state=active]:bg-accent data-[state=active]:text-black data-[state=active]:font-semibold data-[state=inactive]:bg-zinc-800/60 data-[state=inactive]:text-white/90 data-[state=inactive]:border data-[state=inactive]:border-white/20 data-[state=inactive]:hover:bg-zinc-700/80 data-[state=inactive]:hover:border-accent/50 data-[state=inactive]:hover:text-white data-[state=inactive]:hover:scale-105 text-sm md:text-base px-2 py-2 md:px-4 md:py-3 transition-all duration-300 font-medium"
+                                className="data-[state=active]:bg-accent data-[state=active]:text-black data-[state=active]:font-semibold data-[state=inactive]:bg-transparent data-[state=inactive]:text-white/90 data-[state=inactive]:hover:bg-zinc-800/80 data-[state=inactive]:hover:text-white text-xs md:text-sm px-3 py-2 md:px-4 md:py-2.5 transition-all duration-300 font-medium rounded-md text-center flex items-center justify-center"
                             >
                                 ConstructFlow
                             </TabsTrigger>
                             <TabsTrigger 
                                 value="autoppt"
-                                className="data-[state=active]:bg-accent data-[state=active]:text-black data-[state=active]:font-semibold data-[state=inactive]:bg-zinc-800/60 data-[state=inactive]:text-white/90 data-[state=inactive]:border data-[state=inactive]:border-white/20 data-[state=inactive]:hover:bg-zinc-700/80 data-[state=inactive]:hover:border-accent/50 data-[state=inactive]:hover:text-white data-[state=inactive]:hover:scale-105 text-sm md:text-base px-2 py-2 md:px-4 md:py-3 transition-all duration-300 font-medium"
+                                className="data-[state=active]:bg-accent data-[state=active]:text-black data-[state=active]:font-semibold data-[state=inactive]:bg-transparent data-[state=inactive]:text-white/90 data-[state=inactive]:hover:bg-zinc-800/80 data-[state=inactive]:hover:text-white text-xs md:text-sm px-3 py-2 md:px-4 md:py-2.5 transition-all duration-300 font-medium rounded-md text-center flex items-center justify-center"
                             >
                                 AutoPPT
                             </TabsTrigger>
                             <TabsTrigger 
                                 value="healthadmin"
-                                className="data-[state=active]:bg-accent data-[state=active]:text-black data-[state=active]:font-semibold data-[state=inactive]:bg-zinc-800/60 data-[state=inactive]:text-white/90 data-[state=inactive]:border data-[state=inactive]:border-white/20 data-[state=inactive]:hover:bg-zinc-700/80 data-[state=inactive]:hover:border-accent/50 data-[state=inactive]:hover:text-white data-[state=inactive]:hover:scale-105 text-sm md:text-base px-2 py-2 md:px-4 md:py-3 transition-all duration-300 font-medium"
+                                className="data-[state=active]:bg-accent data-[state=active]:text-black data-[state=active]:font-semibold data-[state=inactive]:bg-transparent data-[state=inactive]:text-white/90 data-[state=inactive]:hover:bg-zinc-800/80 data-[state=inactive]:hover:text-white text-xs md:text-sm px-3 py-2 md:px-4 md:py-2.5 transition-all duration-300 font-medium rounded-md text-center flex items-center justify-center"
                             >
                                 HealthAdmin
                             </TabsTrigger>

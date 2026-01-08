@@ -11,6 +11,7 @@ import { Testimonial } from "@/components/Testimonial";
 import { Footer } from "@/components/Footer";
 import { WorkflowSection } from "@/components/WorkflowSection";
 import { FAQ } from "@/components/FAQ";
+import { SEO } from "@/components/SEO";
 import { useScrollToTop } from "@/hooks/use-scroll-to-top";
 
 const Home = () => {
@@ -18,6 +19,11 @@ const Home = () => {
 
   return (
     <div className="overflow-y-auto">
+      <SEO
+        title="Brian Montero — Especialista en IA y Automatización Empresarial"
+        description="Ingeniero especializado en IA y automatización. Transformo procesos empresariales mediante agentes de IA, automatización y soluciones inteligentes."
+        canonical="https://www.bmontero.com/"
+      />
       <Navbar />
       
       {/* 1️⃣ Hero / Bienvenida */}

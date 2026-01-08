@@ -59,7 +59,7 @@ export const Footer = () => {
                 <Linkedin className="h-5 w-5" />
               </a>
               <a
-                href="mailto:bmontero@milytics.io"
+                href="mailto:pmontero.brian@gmail.com"
                 className="p-3 bg-accent/10 rounded-full text-accent hover:bg-accent hover:text-accent-foreground transition-all duration-300 hover:scale-110"
                 aria-label="Email"
               >
@@ -111,10 +111,10 @@ export const Footer = () => {
                 <div>
                   <p className="text-foreground/70 text-sm">Email</p>
                   <a
-                    href="mailto:bmontero@milytics.io"
+                    href="mailto:pmontero.brian@gmail.com"
                     className="text-foreground hover:text-accent transition-colors duration-300"
                   >
-                    bmontero@milytics.io
+                    pmontero.brian@gmail.com
                   </a>
                 </div>
               </div>

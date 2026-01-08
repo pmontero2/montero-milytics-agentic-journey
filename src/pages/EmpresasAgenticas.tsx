@@ -9,6 +9,7 @@ import { Testimonial } from "@/components/Testimonial";
 import { Footer } from "@/components/Footer";
 import { WorkflowSection } from "@/components/WorkflowSection";
 import { FAQEmpresas } from "@/components/FAQEmpresas";
+import { SEO } from "@/components/SEO";
 import { useScrollToTop } from "@/hooks/use-scroll-to-top";
 
 import agente1Image from "@/assets/agente1.webp";
@@ -68,6 +69,12 @@ const EmpresasAgenticas = () => {
 
   return (
     <div className="overflow-y-auto">
+      <SEO
+        title="Empresas Agénticas — Agentes de IA para Empresas"
+        description="Agentes de IA para más leads, mejor conversión y respuestas 24/7. Pilotos en semanas con KPIs medibles. Automatización inteligente para tu empresa."
+        canonical="https://www.bmontero.com/empresas-agenticas"
+        keywords="agentes IA, automatización empresarial, chatbots empresariales, IA para empresas, generación de leads, conversión de ventas, agentes inteligentes"
+      />
       <Navbar />
       <HeroEmpresas />
       

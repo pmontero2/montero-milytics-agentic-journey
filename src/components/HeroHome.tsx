@@ -66,7 +66,7 @@ export const HeroHome = () => {
               </h2>
               
               <div className="text-base sm:text-lg md:text-xl text-white/80 mb-6 sm:mb-8">
-                Desde <span className="text-yellow-300 font-semibold">Milytics</span>, ayudo a construir empresas más <span className="text-yellow-300 font-semibold">humanas y eficientes</span>.
+                Desarrollo <span className="text-yellow-300 font-semibold">integraciones y sistemas</span> que reducen <span className="text-yellow-300 font-semibold">tareas manuales</span>.
               </div>
             </div>
             

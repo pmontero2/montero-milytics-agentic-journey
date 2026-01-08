@@ -33,11 +33,11 @@ export const TrajectoryExperience = () => {
     },
     {
       icon: Bot,
-      title: "Automatización y Sistemas Conversacionales",
-      subtitle: "Sixbell — WhatsApp/Telegram, AWS, Genesys Cloud",
-      period: "2021 y 2024",
+      title: "Práctica Cloud Engineer",
+      subtitle: "Sixbell (Sixtra SA) — AWS Lambda, microservicios y automatización",
+      period: "Abr 2024 – Jun 2024",
       description:
-        "Diseñé bots y flujos automatizados enfocados en productividad y empatía. Confirmé que la tecnología funciona mejor cuando se adapta a las personas, no al revés.",
+        "Automaticé encuestas post atención con AWS Lambda y APIs de Genesys Cloud. Desarrollé interfaz web en Node.js + Express para estandarizar infraestructura EPA. Integré microservicios y flujos serverless para optimizar operación interna. Apoyé en despliegues cloud y procesos de automatización.",
       color: "from-indigo-500/20 to-indigo-600/20",
       borderColor: "border-indigo-500/30"
     },
@@ -54,20 +54,20 @@ export const TrajectoryExperience = () => {
     {
       icon: Workflow,
       title: "Líder de Integraciones y Automatización",
-      subtitle: "Venta Store Chile — Operaciones, IA y analítica",
-      period: "May–Ago 2025",
+      subtitle: "Ventastore Chile SPA — Dashboards, automatización y reducción de tareas",
+      period: "May 2025 – Jul 2025",
       description:
-        "Implementé pipelines no-code, dashboards y bots que mejoraron la visibilidad operativa. Logramos equipos más ágiles y procesos centrados en la experiencia humana.",
+        "Desarrollé dashboard logístico con ODT y ZPL, reduciendo confirmación de pedidos en 80%. Creé dashboard de ventas con proyecciones a 6+ meses, reduciendo quiebres de stock en 30%. Automatización de cierre de caja con AppSheet logrando 100% trazabilidad. Bots internos para seguridad y métricas, reduciendo tareas repetitivas en 70%.",
       color: "from-emerald-500/20 to-emerald-600/20",
       borderColor: "border-emerald-500/30"
     },
     {
       icon: Sparkles,
-      title: "Fundación de Milytics",
-      subtitle: "De la ingeniería a la inteligencia operativa",
-      period: "2024–Presente",
+      title: "Ingeniero de Integraciones y Automatización",
+      subtitle: "MILYTICS SPA — Backend, APIs, IA y arquitectura serverless",
+      period: "Jul 2025 – Dic 2025",
       description:
-        "Consolidé todo lo aprendido para crear Milytics: una agencia que impulsa Empresas Agénticas, donde personas y agentes de IA colaboran para generar impacto real y sostenible.",
+        "Desarrollé integraciones backend y APIs para ventas, logística y operaciones internas. Implementé dashboards en tiempo real con Supabase, arquitectura serverless con Node.js y Edge Functions, y automatización inteligente con IA (embeddings, RAG, agentes) para reducir tareas manuales significativamente.",
       color: "from-fuchsia-500/20 to-fuchsia-600/20",
       borderColor: "border-fuchsia-500/30"
     }

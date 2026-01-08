@@ -6,6 +6,7 @@ import { VisionPurpose } from "@/components/VisionPurpose";
 import { WhatIDo } from "@/components/WhatIDo";
 import { CTASection } from "@/components/CTASection";
 import { StickyCTA } from "@/components/StickyCTA";
+import { SEO } from "@/components/SEO";
 import { useScrollToTop } from "@/hooks/use-scroll-to-top";
 import { Button } from "@/components/ui/button";
 import { useNavigate } from "react-router-dom";
@@ -23,11 +24,17 @@ const SobreMi = () => {
   const [isCVModalOpen, setIsCVModalOpen] = useState(false);
 
   const goToContact = () => {
-    window.location.href = "mailto:bmontero@milytics.io";
+    window.location.href = "mailto:pmontero.brian@gmail.com";
   };
 
   return (
     <div className="overflow-y-auto">
+      <SEO
+        title="Sobre Mí — Brian Montero"
+        description="Ingeniero Civil Telemático especializado en IA y automatización. Conoce mi trayectoria, experiencia y proyectos en inteligencia artificial empresarial."
+        canonical="https://www.bmontero.com/sobre-mi"
+        keywords="Brian Montero, perfil profesional, ingeniero telemático, especialista IA, experiencia automatización, trayectoria profesional"
+      />
       <Navbar />
 
       {/* Hero Section */}
@@ -57,7 +64,7 @@ const SobreMi = () => {
             </p>
 
             <p className="mb-4 sm:mb-6">
-              Fundador de <span className="text-accent font-semibold">Milytics</span>, donde transformo empresas tradicionales en <span className="text-accent font-semibold">Empresas Agénticas</span> mediante la implementación estratégica de agentes de IA.
+              He trabajado transformando empresas tradicionales mediante la implementación estratégica de <span className="text-accent font-semibold">agentes de IA</span> y <span className="text-accent font-semibold">automatización inteligente</span>. Actualmente busco nuevas oportunidades para aplicar mi experiencia en proyectos desafiantes.
             </p>
 
             <p className="mb-6 sm:mb-8">

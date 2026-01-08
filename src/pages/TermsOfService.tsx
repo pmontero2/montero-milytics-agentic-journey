@@ -1,5 +1,6 @@
 import { Navbar } from "@/components/Navbar";
 import { Footer } from "@/components/Footer";
+import { SEO } from "@/components/SEO";
 import { useScrollToTop } from "@/hooks/use-scroll-to-top";
 
 export const TermsOfService = () => {
@@ -7,6 +8,12 @@ export const TermsOfService = () => {
 
   return (
     <div className="min-h-screen bg-background">
+      <SEO
+        title="Términos de Servicio — Brian Montero"
+        description="Términos y condiciones de uso de los servicios de Brian Montero. Información sobre el uso del sitio web y servicios de IA y automatización."
+        canonical="https://www.bmontero.com/terminos-servicio"
+        keywords="términos de servicio, condiciones de uso, términos legales, condiciones de servicio"
+      />
       <Navbar />
       
       {/* Main Content */}
@@ -132,7 +139,7 @@ export const TermsOfService = () => {
                   Si tienes preguntas sobre estos Términos de Servicio, puedes contactarnos en:
                 </p>
                 <div className="bg-accent/10 p-4 sm:p-6 rounded-lg mt-3 sm:mt-4">
-                  <p className="text-sm sm:text-base"><strong>Email:</strong> bmontero@milytics.io</p>
+                  <p className="text-sm sm:text-base"><strong>Email:</strong> pmontero.brian@gmail.com</p>
                 </div>
               </section>
             </div>

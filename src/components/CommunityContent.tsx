@@ -1,17 +1,17 @@
-import { GraduationCap, Newspaper, Users, Play, ExternalLink } from "lucide-react";
+import { GraduationCap, Newspaper, Users, Play, ExternalLink, Linkedin } from "lucide-react";
 import { Button } from "./ui/button";
 
 export const CommunityContent = () => {
   const communityElements = [
     {
-      icon: ExternalLink,
-      title: "Redes de Milytics",
-      subtitle: "Sitio web oficial",
-      description: "Conoce más sobre Milytics, nuestros servicios y agenda tu diagnóstico IA totalmente gratis.",
+      icon: Linkedin,
+      title: "LinkedIn",
+      subtitle: "Perfil profesional",
+      description: "Conecta conmigo y conoce más sobre mi experiencia en tecnología, automatización e IA.",
       color: "from-blue-500/20 to-blue-600/20",
       borderColor: "border-blue-500/30",
-      cta: "Visitar sitio web",
-      url: "https://arsenal.milytics.io"
+      cta: "Ver perfil",
+      url: "https://www.linkedin.com/in/bmonterop"
     },
     {
       icon: Newspaper,

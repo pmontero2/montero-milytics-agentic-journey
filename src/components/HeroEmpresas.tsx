@@ -1,4 +1,4 @@
-import { ArrowDown, Sparkles, Building2, BookOpen, ExternalLink } from "lucide-react";
+import { ArrowDown, Sparkles, Building2, BookOpen } from "lucide-react";
 import { Button } from "./ui/button";
 import { useState } from "react";
 import { FloatingContactForm } from "./FloatingContactForm";
@@ -19,8 +19,8 @@ export const HeroEmpresas = () => {
     setIsFormOpen(false);
   };
 
-  const goToMilytics = () => {
-    window.open("https://milytics.io", "_blank");
+  const openContactForm = () => {
+    setIsFormOpen(true);
   };
 
   return (
@@ -61,7 +61,7 @@ export const HeroEmpresas = () => {
           </h2>
           
           <div className="text-base sm:text-lg md:text-xl text-accent mb-4 sm:mb-6 max-w-2xl mx-auto">
-            Desde <span className="text-glow-accent font-bold text-lg sm:text-xl md:text-2xl">Milytics</span>, descubre cómo las <span className="text-glow-accent font-semibold">empresas agénticas</span> están revolucionando la industria con IA que trabaja 24/7.
+            Descubre cómo las <span className="text-glow-accent font-semibold">empresas agénticas</span> están revolucionando la industria con <span className="text-glow-accent font-semibold">IA que trabaja 24/7</span>.
           </div>
         </div>
         
@@ -76,13 +76,13 @@ export const HeroEmpresas = () => {
             Descubre Cómo
           </Button>
           <Button
-            onClick={goToMilytics}
+            onClick={openContactForm}
             variant="outline"
             size="lg"
             className="border-accent/30 text-white hover:bg-white hover:text-gray-900 font-semibold text-base sm:text-lg px-6 sm:px-8 py-4 sm:py-6 rounded-full hover:scale-105 transition-all duration-300 min-h-[48px] sm:min-h-[56px] group w-full sm:w-auto"
           >
-            <ExternalLink className="mr-2 h-4 w-4 sm:h-5 sm:w-5 group-hover:scale-110 transition-transform duration-300" />
-            Conocer Milytics
+            <BookOpen className="mr-2 h-4 w-4 sm:h-5 sm:w-5 group-hover:scale-110 transition-transform duration-300" />
+            Agenda Consultoría
           </Button>
         
         </div>

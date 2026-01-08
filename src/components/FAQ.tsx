@@ -15,7 +15,7 @@ export const FAQ = () => {
     },
     {
       question: "⚙️ ¿Qué diferencia hay entre un bot, una automatización y un agente?",
-      answer: "Un bot responde o ejecuta acciones puntuales. Una automatización conecta procesos entre distintas áreas. Un agente combina ambos: entiende contexto, toma decisiones simples y aprende con el tiempo. Eso es lo que implementamos en Milytics."
+      answer: "Un bot responde o ejecuta acciones puntuales. Una automatización conecta procesos entre distintas áreas. Un agente combina ambos: entiende contexto, toma decisiones simples y aprende con el tiempo. Eso es lo que he implementado en proyectos anteriores."
     },
     {
       question: "📊 ¿En qué etapa puedo aplicar IA en mi empresa?",
@@ -27,7 +27,7 @@ export const FAQ = () => {
     },
     {
       question: "🤝 ¿Trabajas solo o con un equipo?",
-      answer: "Trabajo junto a Milytics, un equipo especializado en datos, automatización y diseño de agentes IA. Yo lidero la visión técnica y conceptual, y cada proyecto reúne a los expertos necesarios según su complejidad."
+      answer: "He trabajado tanto de forma independiente como liderando equipos. En proyectos anteriores como Milytics, coordiné equipos especializados en datos, automatización y diseño de agentes IA. Adapto mi enfoque según las necesidades del proyecto."
     },
     {
       question: "💬 ¿Puedo agendar una reunión para entender si esto aplica a mi negocio?",

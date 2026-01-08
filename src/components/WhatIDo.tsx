@@ -73,7 +73,7 @@ export const WhatIDo = () => {
               Qué hago / Cómo ayudo
             </h2>
             <p className="text-lg md:text-xl text-accent/80 max-w-3xl mx-auto">
-              Traduzco mi propósito en acción. Aquí está lo que puedes esperar de mí o de Milytics.
+              Traduzco mi propósito en acción. Aquí está lo que puedes esperar de mí.
             </p>
           </div>
 

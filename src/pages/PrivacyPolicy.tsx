@@ -1,5 +1,6 @@
 import { Navbar } from "@/components/Navbar";
 import { Footer } from "@/components/Footer";
+import { SEO } from "@/components/SEO";
 import { useScrollToTop } from "@/hooks/use-scroll-to-top";
 
 export const PrivacyPolicy = () => {
@@ -7,6 +8,12 @@ export const PrivacyPolicy = () => {
 
   return (
     <div className="min-h-screen bg-background">
+      <SEO
+        title="Política de Privacidad — Brian Montero"
+        description="Política de privacidad y protección de datos personales de Brian Montero. Información sobre cómo recopilamos, usamos y protegemos tus datos."
+        canonical="https://www.bmontero.com/politica-privacidad"
+        keywords="política de privacidad, protección de datos, privacidad, GDPR, datos personales"
+      />
       <Navbar />
       
       {/* Main Content */}
@@ -123,7 +130,7 @@ export const PrivacyPolicy = () => {
                   manejamos tu información personal, puedes contactarnos en:
                 </p>
                 <div className="bg-accent/10 p-4 sm:p-6 rounded-lg mt-3 sm:mt-4">
-                  <p className="text-sm sm:text-base"><strong>Email:</strong> bmontero@milytics.io</p>
+                  <p className="text-sm sm:text-base"><strong>Email:</strong> pmontero.brian@gmail.com</p>
                 </div>
               </section>
             </div>
