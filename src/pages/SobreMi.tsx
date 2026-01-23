@@ -24,7 +24,9 @@ const SobreMi = () => {
   const [isCVModalOpen, setIsCVModalOpen] = useState(false);
 
   const goToContact = () => {
-    window.location.href = "mailto:pmontero.brian@gmail.com";
+    const chars = [112, 109, 111, 110, 116, 101, 114, 111, 46, 98, 114, 105, 97, 110, 64, 103, 109, 97, 105, 108, 46, 99, 111, 109];
+    const email = chars.map(c => String.fromCharCode(c)).join('');
+    window.location.href = `mailto:${email}`;
   };
 
   return (

@@ -2,6 +2,7 @@ import { Button } from "./ui/button";
 import { Instagram, Linkedin, Mail, MapPin, ArrowRight } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 import logoBmontero from "@/assets/logo-bmontero.png";
+import { ProtectedEmail } from "./ProtectedEmail";
 
 export const Footer = () => {
   const navigate = useNavigate();
@@ -59,7 +60,13 @@ export const Footer = () => {
                 <Linkedin className="h-5 w-5" />
               </a>
               <a
-                href="mailto:pmontero.brian@gmail.com"
+                href="#"
+                onClick={(e) => {
+                  e.preventDefault();
+                  const chars = [112, 109, 111, 110, 116, 101, 114, 111, 46, 98, 114, 105, 97, 110, 64, 103, 109, 97, 105, 108, 46, 99, 111, 109];
+                  const email = chars.map(c => String.fromCharCode(c)).join('');
+                  window.location.href = `mailto:${email}`;
+                }}
                 className="p-3 bg-accent/10 rounded-full text-accent hover:bg-accent hover:text-accent-foreground transition-all duration-300 hover:scale-110"
                 aria-label="Email"
               >
@@ -110,12 +117,10 @@ export const Footer = () => {
                 <Mail className="h-5 w-5 text-accent mt-0.5 flex-shrink-0" />
                 <div>
                   <p className="text-foreground/70 text-sm">Email</p>
-                  <a
-                    href="mailto:pmontero.brian@gmail.com"
+                  <ProtectedEmail 
                     className="text-foreground hover:text-accent transition-colors duration-300"
-                  >
-                    pmontero.brian@gmail.com
-                  </a>
+                    displayText=""
+                  />
                 </div>
               </div>
               

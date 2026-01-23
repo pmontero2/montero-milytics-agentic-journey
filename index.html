@@ -66,7 +66,7 @@
     </script>
 
     <!-- Structured Data for better SEO -->
-    <script type="application/ld+json">
+    <script type="application/ld+json" id="structured-data">
     {
       "@context": "https://schema.org",
       "@type": "Person",
@@ -75,12 +75,29 @@
       "description": "Ingeniero Civil Telemático especializado en inteligencia artificial empresarial y automatización de procesos. Experto en desarrollo de agentes de IA, automatización de workflows y optimización de operaciones empresariales.",
       "url": "https://www.bmontero.com",
       "image": "https://www.bmontero.com/assets/logo-bmontero-FltwS1tl.png",
-      "email": "pmontero.brian@gmail.com",
+      "email": "",
       "sameAs": [
         "https://twitter.com/brianmontero",
         "https://linkedin.com/in/brianmontero"
       ]
     }
+    </script>
+    <script>
+      // Construir email de forma ofuscada para schema.org
+      (function() {
+        const chars = [112, 109, 111, 110, 116, 101, 114, 111, 46, 98, 114, 105, 97, 110, 64, 103, 109, 97, 105, 108, 46, 99, 111, 109];
+        const email = chars.map(c => String.fromCharCode(c)).join('');
+        const script = document.getElementById('structured-data');
+        if (script) {
+          try {
+            const data = JSON.parse(script.textContent);
+            data.email = email;
+            script.textContent = JSON.stringify(data);
+          } catch(e) {
+            console.error('Error updating structured data:', e);
+          }
+        }
+      })();
     </script>
   </head>
 

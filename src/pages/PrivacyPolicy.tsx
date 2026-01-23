@@ -2,6 +2,7 @@ import { Navbar } from "@/components/Navbar";
 import { Footer } from "@/components/Footer";
 import { SEO } from "@/components/SEO";
 import { useScrollToTop } from "@/hooks/use-scroll-to-top";
+import { ProtectedEmail } from "@/components/ProtectedEmail";
 
 export const PrivacyPolicy = () => {
   useScrollToTop();
@@ -130,7 +131,9 @@ export const PrivacyPolicy = () => {
                   manejamos tu información personal, puedes contactarnos en:
                 </p>
                 <div className="bg-accent/10 p-4 sm:p-6 rounded-lg mt-3 sm:mt-4">
-                  <p className="text-sm sm:text-base"><strong>Email:</strong> pmontero.brian@gmail.com</p>
+                  <p className="text-sm sm:text-base">
+                    <strong>Email:</strong> <ProtectedEmail showAsLink={true} alwaysShow={true} />
+                  </p>
                 </div>
               </section>
             </div>
