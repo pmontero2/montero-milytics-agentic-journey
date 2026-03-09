@@ -13,57 +13,70 @@ import { WorkflowSection } from "@/components/WorkflowSection";
 import { FAQ } from "@/components/FAQ";
 import { SEO } from "@/components/SEO";
 import { useScrollToTop } from "@/hooks/use-scroll-to-top";
+import { ScrollReveal } from "@/components/ScrollReveal";
 
 const Home = () => {
   useScrollToTop();
 
   return (
-    <div className="overflow-y-auto">
+    <div className="w-full">
       <SEO
         title="Brian Montero — Especialista en IA y Automatización Empresarial"
         description="Ingeniero especializado en IA y automatización. Transformo procesos empresariales mediante agentes de IA, automatización y soluciones inteligentes."
         canonical="https://www.bmontero.com/"
       />
       <Navbar />
-      
+
       {/* 1️⃣ Hero / Bienvenida */}
       <div id="hero">
         <HeroHome />
       </div>
-      
+
       {/* 2️⃣ Visión y Propósito */}
-      <div id="vision-purpose">
-        <VisionPurpose />
-      </div>
-      
+      <ScrollReveal>
+        <div id="vision-purpose">
+          <VisionPurpose />
+        </div>
+      </ScrollReveal>
+
       {/* 3️⃣ Trayectoria y Experiencia */}
-      <div id="trajectory">
-        <TrajectoryExperience />
-      </div>
-      
+      <ScrollReveal delay={0.2}>
+        <div id="trajectory">
+          <TrajectoryExperience />
+        </div>
+      </ScrollReveal>
+
       {/* 4️⃣ Qué hago / Cómo ayudo */}
-      <div id="what-i-do">
-        <WhatIDo />
-      </div>
-      
+      <ScrollReveal>
+        <div id="what-i-do">
+          <WhatIDo />
+        </div>
+      </ScrollReveal>
+
       {/* 5️⃣ Comunidad y Contenido */}
-      <div id="community">
-        <CommunityContent />
-      </div>
-      
+      <ScrollReveal>
+        <div id="community">
+          <CommunityContent />
+        </div>
+      </ScrollReveal>
+
       {/* FAQ Section */}
-      <div id="faq">
-        <FAQ />
-      </div>
-      
+      <ScrollReveal>
+        <div id="faq">
+          <FAQ />
+        </div>
+      </ScrollReveal>
+
       {/* Final CTA */}
-      <div id="cta">
-        <CTASection />
-      </div>
-      
+      <ScrollReveal>
+        <div id="cta">
+          <CTASection />
+        </div>
+      </ScrollReveal>
+
       {/* Footer */}
       <Footer />
-      
+
       {/* Scroll Progress & Sticky Elements */}
       {/* <ScrollProgressHome /> */}
       <StickyCTA />

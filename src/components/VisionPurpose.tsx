@@ -1,6 +1,7 @@
 import { Compass, Globe, ArrowRight } from "lucide-react";
 import { Button } from "./ui/button";
 import { useNavigate } from "react-router-dom";
+import { motion } from "framer-motion";
 
 interface VisionPurposeProps {
   hideCTA?: boolean;
@@ -36,7 +37,11 @@ export const VisionPurpose = ({ hideCTA = false }: VisionPurposeProps) => {
           {/* 2 Main Blocks */}
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8 mb-8 sm:mb-12">
             {/* Propósito Block */}
-            <div className="bg-gradient-to-br from-accent/20 to-primary/20 rounded-2xl p-6 sm:p-8 border border-accent/30 hover:scale-105 transition-all duration-300">
+            <motion.div
+              whileHover={{ y: -10, scale: 1.02 }}
+              transition={{ type: "spring", stiffness: 300, damping: 20 }}
+              className="bg-gradient-to-br from-accent/20 to-primary/20 rounded-2xl p-6 sm:p-8 border border-accent/30 shadow-[0_0_30px_rgba(var(--accent),0.05)] hover:shadow-[0_0_40px_rgba(var(--accent),0.15)] transition-shadow duration-300"
+            >
               <div className="flex items-center mb-4 sm:mb-6">
                 <Compass className="h-6 w-6 sm:h-8 sm:w-8 text-yellow-400 mr-3 sm:mr-4" />
                 <h3 className="text-xl sm:text-2xl font-bold text-white">Propósito</h3>
@@ -49,10 +54,14 @@ export const VisionPurpose = ({ hideCTA = false }: VisionPurposeProps) => {
                   Mi propósito es usar la innovación y la inteligencia artificial para hacer la vida más fácil, mejorar procesos, y ayudar a que tanto las empresas como las personas crezcan de forma <span className="text-accent font-medium">sostenible y humana</span>.
                 </p>
               </div>
-            </div>
+            </motion.div>
 
             {/* Visión Block */}
-            <div className="bg-gradient-to-br from-primary/20 to-accent/20 rounded-2xl p-6 sm:p-8 border border-primary/30 hover:scale-105 transition-all duration-300">
+            <motion.div
+              whileHover={{ y: -10, scale: 1.02 }}
+              transition={{ type: "spring", stiffness: 300, damping: 20 }}
+              className="bg-gradient-to-br from-primary/20 to-accent/20 rounded-2xl p-6 sm:p-8 border border-primary/30 shadow-[0_0_30px_rgba(var(--primary),0.05)] hover:shadow-[0_0_40px_rgba(var(--primary),0.15)] transition-shadow duration-300"
+            >
               <div className="flex items-center mb-4 sm:mb-6">
                 <Globe className="h-6 w-6 sm:h-8 sm:w-8 text-yellow-400 mr-3 sm:mr-4" />
                 <h3 className="text-xl sm:text-2xl font-bold text-white">Visión</h3>
@@ -68,7 +77,7 @@ export const VisionPurpose = ({ hideCTA = false }: VisionPurposeProps) => {
                   Sueño con un mundo que abrace el cambio, que deje de temerle a la innovación, y donde cada persona sienta que puede ser parte de esa <span className="text-accent font-medium">revolución</span>.
                 </p>
               </div>
-            </div>
+            </motion.div>
           </div>
 
           {/* CTA Section */}

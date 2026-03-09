@@ -45,6 +45,12 @@ const PAGES = [
     description: 'Proyectos'
   },
   {
+    url: '/blog',
+    changefreq: 'weekly',
+    priority: '0.6',
+    description: 'Blog'
+  },
+  {
     url: '/politica-privacidad',
     changefreq: 'yearly',
     priority: '0.3',

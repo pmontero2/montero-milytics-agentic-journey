@@ -1,7 +1,8 @@
 import { useState } from "react";
 import { Button } from "./ui/button";
-import { ArrowRight } from "lucide-react";
+import { ArrowRight, Sparkles } from "lucide-react";
 import { FloatingContactForm } from "./FloatingContactForm";
+import { motion } from "framer-motion";
 
 export const CTASection = () => {
   const [isFormOpen, setIsFormOpen] = useState(false);
@@ -15,29 +16,59 @@ export const CTASection = () => {
   };
 
   return (
-    <section id="contact" className="bg-accent/5 border-t border-accent/20">
-      <div className="container mx-auto px-4 sm:px-6 py-12 sm:py-16 md:py-20">
-        <div className="text-center">
-          <h3 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-foreground mb-4 sm:mb-6">
-            ¿Listo para transformar tu negocio?
+    <section id="contact" className="bg-black py-24 relative overflow-hidden border-t border-white/5">
+      {/* Dynamic Background Glow */}
+      <div className="absolute inset-0 opacity-20 pointer-events-none">
+        <motion.div
+          animate={{
+            scale: [1, 1.2, 1],
+            opacity: [0.1, 0.2, 0.1],
+          }}
+          transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }}
+          className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-accent/30 rounded-full blur-[150px]"
+        />
+      </div>
+
+      <div className="container mx-auto px-4 sm:px-6 relative z-10">
+        <motion.div
+          initial={{ opacity: 0, scale: 0.95 }}
+          whileInView={{ opacity: 1, scale: 1 }}
+          viewport={{ once: true }}
+          className="max-w-4xl mx-auto text-center"
+        >
+          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-accent/10 border border-accent/20 text-accent mb-8">
+            <Sparkles className="h-4 w-4" />
+            <span className="text-sm font-bold tracking-widest uppercase">Tu próximo paso</span>
+          </div>
+
+          <h3 className="text-4xl sm:text-5xl md:text-6xl font-bold text-white mb-8 leading-tight">
+            ¿Listo para transformar <br />
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-accent to-accent/60">tu negocio con IA?</span>
           </h3>
-          <p className="text-base sm:text-lg md:text-xl text-foreground/70 mb-6 sm:mb-8 max-w-3xl mx-auto leading-relaxed">
-            Agenda una consulta gratuita y descubre cómo la IA puede revolucionar tu empresa.
+
+          <p className="text-xl text-white/60 mb-12 max-w-2xl mx-auto leading-relaxed">
+            Hablemos sobre tus procesos actuales y descubramos juntos cómo la automatización inteligente puede liberar el potencial de tu equipo.
           </p>
+
           <Button
             onClick={openForm}
-            className="bg-accent text-accent-foreground hover:bg-accent/90 font-bold px-6 sm:px-8 py-3 sm:py-4 text-base sm:text-lg rounded-full shadow-[0_0_20px_hsl(45_100%_50%/0.3)] hover:scale-105 transition-all duration-300 min-h-[48px] sm:min-h-[56px]"
+            size="lg"
+            className="bg-accent text-accent-foreground hover:bg-accent/90 font-bold px-12 py-8 text-xl rounded-full shadow-[0_0_40px_rgba(var(--accent),0.4)] hover:scale-105 transition-all duration-300 group"
           >
             Obtener consulta gratis
-            <ArrowRight className="ml-2 h-4 w-4 sm:h-5 sm:w-5" />
+            <ArrowRight className="ml-3 h-6 w-6 group-hover:translate-x-2 transition-transform duration-300" />
           </Button>
-        </div>
+
+          <p className="mt-8 text-white/40 text-sm">
+            Sin compromisos. Solo una charla estratégica de 15 minutos.
+          </p>
+        </motion.div>
       </div>
-      
-      <FloatingContactForm 
-        isOpen={isFormOpen} 
-        onClose={closeForm} 
-        source="brinz landing" 
+
+      <FloatingContactForm
+        isOpen={isFormOpen}
+        onClose={closeForm}
+        source="brinz landing"
       />
     </section>
   );

@@ -4,6 +4,7 @@ import { useNavigate } from "react-router-dom";
 import { useState } from "react";
 import { FloatingContactForm } from "./FloatingContactForm";
 import brinziImage from "@/assets/bzy2.webp";
+import { motion } from "framer-motion";
 
 export const HeroHome = () => {
   const navigate = useNavigate();
@@ -25,80 +26,171 @@ export const HeroHome = () => {
     setIsFormOpen(false);
   };
 
+  const containerVariants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.2,
+        delayChildren: 0.3,
+      },
+    },
+  };
+
+  const itemVariants = {
+    hidden: { y: 20, opacity: 0 },
+    visible: {
+      y: 0,
+      opacity: 1,
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      transition: { duration: 0.8, ease: "easeOut" as any },
+    },
+  };
+
+  const imageVariants = {
+    hidden: { scale: 0.8, opacity: 0, rotate: -5 },
+    visible: {
+      scale: 1,
+      opacity: 1,
+      rotate: 0,
+      transition: {
+        duration: 1.2,
+        // eslint-disable-next-line @typescript-eslint/no-explicit-any
+        ease: [0.6, 0.01, 0.05, 0.95] as any,
+        delay: 0.2
+      },
+    },
+  };
+
   return (
     <section className="min-h-screen flex items-center justify-center relative overflow-hidden gradient-primary pt-16">
       {/* Animated Background */}
       <div className="absolute inset-0 opacity-30">
-        <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-accent rounded-full blur-3xl animate-pulse"></div>
-        <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-primary rounded-full blur-3xl animate-pulse delay-1000"></div>
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-64 h-64 bg-accent/50 rounded-full blur-2xl animate-pulse delay-500"></div>
+        <motion.div
+          animate={{
+            scale: [1, 1.25, 1],
+            opacity: [0.15, 0.35, 0.15],
+          }}
+          transition={{ duration: 7, repeat: Infinity, ease: "easeInOut" }}
+          className="absolute top-1/4 left-1/4 w-[500px] h-[500px] bg-accent/40 rounded-full blur-[100px]"
+        />
+        <motion.div
+          animate={{
+            scale: [1.25, 1, 1.25],
+            opacity: [0.1, 0.3, 0.1],
+          }}
+          transition={{ duration: 9, repeat: Infinity, ease: "easeInOut", delay: 1 }}
+          className="absolute bottom-1/4 right-1/4 w-[600px] h-[600px] bg-primary/40 rounded-full blur-[120px]"
+        />
       </div>
 
-      {/* Floating Elements */}
-      <div className="absolute inset-0 overflow-hidden pointer-events-none">
-        <div className="absolute top-20 left-10 w-2 h-2 bg-accent rounded-full animate-ping delay-1000"></div>
-        <div className="absolute top-40 right-20 w-3 h-3 bg-primary rounded-full animate-ping delay-2000"></div>
-        <div className="absolute bottom-40 left-20 w-2 h-2 bg-accent rounded-full animate-ping delay-3000"></div>
-        <div className="absolute bottom-20 right-10 w-3 h-3 bg-primary rounded-full animate-ping delay-4000"></div>
-      </div>
-      
-      <div className="container mx-auto px-4 sm:px-6 relative z-10">
-        <div className="relative flex flex-col lg:flex-row items-center lg:items-center">
+      <div className="container mx-auto px-4 sm:px-6 relative z-10 mt-10">
+        <motion.div
+          variants={containerVariants}
+          initial="hidden"
+          animate="visible"
+          className="relative flex flex-col lg:flex-row items-center justify-center lg:items-center gap-8 lg:gap-16 pt-8"
+        >
           {/* Left Column - Image */}
-          <div className="flex-shrink-0 animate-fade-in z-10 mb-8 lg:mb-0">
-              <img 
-                src={brinziImage} 
-                alt="Brian Montero" 
-                className="w-40 h-52 sm:w-48 sm:h-64 md:w-56 md:h-80 lg:w-64 lg:h-96 object-contain scale-105 drop-shadow-[0_0_30px_rgba(255,255,255,0.5)]"
+          <motion.div
+            variants={imageVariants}
+            className="flex-shrink-0 z-10 mb-8 lg:mb-0 relative"
+          >
+            <motion.div
+              animate={{
+                y: [0, -15, 0],
+              }}
+              transition={{
+                duration: 6,
+                repeat: Infinity,
+                ease: "easeInOut"
+              }}
+            >
+              <div className="absolute -inset-4 bg-accent/20 rounded-full blur-2xl opacity-60 animate-pulse" />
+              <img
+                src={brinziImage}
+                alt="Brian Montero"
+                className="w-48 h-64 sm:w-56 sm:h-72 md:w-64 md:h-80 lg:w-80 lg:h-auto object-contain drop-shadow-[0_20px_50px_rgba(0,0,0,0.5)] relative z-10"
               />
-          </div>
+            </motion.div>
+          </motion.div>
 
           {/* Right Column - Content */}
-          <div className="flex-1 text-center lg:text-left relative z-20 lg:-ml-8">
+          <div className="flex-1 text-center lg:text-left relative z-20">
             {/* Main Headlines */}
-            <div className="mb-6 sm:mb-8 animate-fade-in">
-              <h1 className="text-3xl sm:text-4xl md:text-6xl lg:text-7xl font-bold mb-4 sm:mb-6 text-white leading-tight">
-                Hola, soy Brian Montero
-              </h1>
-              
-              <h2 className="text-lg sm:text-xl md:text-2xl lg:text-3xl font-semibold mb-4 sm:mb-6 text-white max-w-2xl mx-auto lg:mx-0">
-                Ayudo a personas y empresas a entender y aplicar la <span className="text-yellow-300 font-semibold">inteligencia artificial</span> de forma <span className="text-yellow-300 font-semibold">simple y útil</span>.
-              </h2>
-              
-              <div className="text-base sm:text-lg md:text-xl text-white/80 mb-6 sm:mb-8">
-                Desarrollo <span className="text-yellow-300 font-semibold">integraciones y sistemas</span> que reducen <span className="text-yellow-300 font-semibold">tareas manuales</span>.
-              </div>
+            <div className="mb-8 lg:mb-10">
+              <motion.h1
+                variants={itemVariants}
+                className="text-4xl sm:text-5xl md:text-6xl lg:text-8xl font-bold mb-4 sm:mb-6 text-white leading-tight tracking-tight"
+              >
+                Hola, soy <span className="text-transparent bg-clip-text bg-gradient-to-r from-white to-white/60">Brian Montero</span>
+              </motion.h1>
+
+              <motion.h2
+                variants={itemVariants}
+                className="text-lg sm:text-xl md:text-2xl lg:text-3xl font-medium mb-4 sm:mb-6 text-white/90 max-w-2xl mx-auto lg:mx-0 leading-relaxed"
+              >
+                Ayudo a personas y empresas a entender y aplicar la <span className="text-accent font-bold">inteligencia artificial</span> de forma <span className="text-accent font-bold">simple y útil</span>.
+              </motion.h2>
+
+              <motion.div
+                variants={itemVariants}
+                className="text-base sm:text-lg md:text-xl text-white/70 mb-6 sm:mb-8"
+              >
+                Desarrollo <span className="text-white font-semibold">integraciones y sistemas</span> que automatizan <span className="text-white font-semibold">tareas manuales</span>.
+              </motion.div>
             </div>
-            
+
             {/* CTA Buttons */}
-            <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center lg:justify-start items-center animate-fade-in mb-6 sm:mb-8">
+            <motion.div
+              variants={itemVariants}
+              className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center lg:justify-start items-center mb-6 sm:mb-8"
+            >
               <Button
                 onClick={openForm}
                 size="lg"
-                className="bg-accent text-accent-foreground hover:bg-accent/90 font-bold text-base sm:text-lg px-6 sm:px-8 py-4 sm:py-6 rounded-full shadow-[0_0_30px_hsl(187_100%_50%/0.3)] hover:scale-105 transition-all duration-300 min-h-[48px] sm:min-h-[56px] group w-full sm:w-auto"
+                className="bg-accent text-accent-foreground hover:bg-accent/90 font-bold text-base sm:text-lg px-8 py-6 rounded-full shadow-[0_0_30px_rgba(var(--accent),0.3)] hover:scale-105 transition-all duration-300 group w-full sm:w-auto"
               >
-                <Calendar className="mr-2 h-4 w-4 sm:h-5 sm:w-5 group-hover:rotate-12 transition-transform duration-300" />
+                <Calendar className="mr-2 h-5 w-5 group-hover:rotate-12 transition-transform duration-300" />
                 Agenda diagnóstico gratis
               </Button>
               <Button
                 onClick={goToEmpresasAgenticas}
                 variant="outline"
                 size="lg"
-                className="border-accent/30 text-white hover:bg-accent/10 font-semibold text-base sm:text-lg px-6 sm:px-8 py-4 sm:py-6 rounded-full hover:scale-105 transition-all duration-300 min-h-[48px] sm:min-h-[56px] group w-full sm:w-auto"
+                className="border-white/20 text-white hover:bg-white/10 font-semibold text-base sm:text-lg px-8 py-6 rounded-full hover:scale-105 transition-all duration-300 group w-full sm:w-auto"
               >
-                <Building2 className="mr-2 h-4 w-4 sm:h-5 sm:w-5 group-hover:scale-110 transition-transform duration-300" />
+                <Building2 className="mr-2 h-5 w-5 group-hover:scale-110 transition-transform duration-300" />
                 Ver Empresas Agénticas
               </Button>
-            </div>
+            </motion.div>
           </div>
-        </div>
+        </motion.div>
       </div>
-      
-      <FloatingContactForm 
-        isOpen={isFormOpen} 
-        onClose={closeForm} 
-        source="hero home" 
+
+      {/* Scroll Down Indicator */}
+      <motion.div
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ delay: 2, duration: 1 }}
+        className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 cursor-pointer text-white/40 hover:text-white/80 transition-colors"
+        onClick={scrollToVision}
+      >
+        <span className="text-xs uppercase tracking-widest font-medium">Explorar</span>
+        <motion.div
+          animate={{ y: [0, 8, 0] }}
+          transition={{ duration: 2, repeat: Infinity }}
+        >
+          <ArrowDown className="h-5 w-5" />
+        </motion.div>
+      </motion.div>
+
+      <FloatingContactForm
+        isOpen={isFormOpen}
+        onClose={closeForm}
+        source="hero home"
       />
     </section>
   );
 };
+

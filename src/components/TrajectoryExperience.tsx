@@ -7,9 +7,11 @@ import {
   Sparkles
 } from "lucide-react";
 import { useState } from "react";
+import { motion, AnimatePresence } from "framer-motion";
+
 export const TrajectoryExperience = () => {
   const [expandedCard, setExpandedCard] = useState<number | null>(null);
-  
+
   const timelineItems = [
     {
       icon: GraduationCap,
@@ -18,8 +20,8 @@ export const TrajectoryExperience = () => {
       period: "2018–2024",
       description:
         "Desarrollé una visión integral: planificar, diseñar, programar y liderar soluciones que conectan hardware, software y datos para resolver problemas reales con propósito humano.",
-      color: "from-sky-500/20 to-sky-600/20",
-      borderColor: "border-sky-500/30"
+      color: "from-sky-500/10 to-sky-600/10",
+      borderColor: "border-sky-500/20"
     },
     {
       icon: FlaskConical,
@@ -28,8 +30,8 @@ export const TrajectoryExperience = () => {
       period: "May–Jun 2023",
       description:
         "Validé sistemas de telemetría marina y calidad de datos en entornos reales. Aprendí cómo la precisión técnica puede mejorar sostenibilidad y eficiencia operativa.",
-      color: "from-teal-500/20 to-teal-600/20",
-      borderColor: "border-teal-500/30"
+      color: "from-teal-500/10 to-teal-600/10",
+      borderColor: "border-teal-500/20"
     },
     {
       icon: Bot,
@@ -38,8 +40,8 @@ export const TrajectoryExperience = () => {
       period: "Abr 2024 – Jun 2024",
       description:
         "Automaticé encuestas post atención con AWS Lambda y APIs de Genesys Cloud. Desarrollé interfaz web en Node.js + Express para estandarizar infraestructura EPA. Integré microservicios y flujos serverless para optimizar operación interna. Apoyé en despliegues cloud y procesos de automatización.",
-      color: "from-indigo-500/20 to-indigo-600/20",
-      borderColor: "border-indigo-500/30"
+      color: "from-indigo-500/10 to-indigo-600/10",
+      borderColor: "border-indigo-500/20"
     },
     {
       icon: Network,
@@ -48,8 +50,8 @@ export const TrajectoryExperience = () => {
       period: "Abr–Dic 2024",
       description:
         "Desarrollé una plataforma trazable para intercambio energético entre vehículos eléctricos, integrando IoT y blockchain con enfoque en transparencia y sostenibilidad.",
-      color: "from-amber-500/20 to-amber-600/20",
-      borderColor: "border-amber-500/30"
+      color: "from-amber-500/10 to-amber-600/10",
+      borderColor: "border-amber-500/20"
     },
     {
       icon: Workflow,
@@ -58,8 +60,8 @@ export const TrajectoryExperience = () => {
       period: "May 2025 – Jul 2025",
       description:
         "Desarrollé dashboard logístico con ODT y ZPL, reduciendo confirmación de pedidos en 80%. Creé dashboard de ventas con proyecciones a 6+ meses, reduciendo quiebres de stock en 30%. Automatización de cierre de caja con AppSheet logrando 100% trazabilidad. Bots internos para seguridad y métricas, reduciendo tareas repetitivas en 70%.",
-      color: "from-emerald-500/20 to-emerald-600/20",
-      borderColor: "border-emerald-500/30"
+      color: "from-emerald-500/10 to-emerald-600/10",
+      borderColor: "border-emerald-500/20"
     },
     {
       icon: Sparkles,
@@ -68,96 +70,160 @@ export const TrajectoryExperience = () => {
       period: "Jul 2025 – Dic 2025",
       description:
         "Desarrollé integraciones backend y APIs para ventas, logística y operaciones internas. Implementé dashboards en tiempo real con Supabase, arquitectura serverless con Node.js y Edge Functions, y automatización inteligente con IA (embeddings, RAG, agentes) para reducir tareas manuales significativamente.",
-      color: "from-fuchsia-500/20 to-fuchsia-600/20",
-      borderColor: "border-fuchsia-500/30"
+      color: "from-fuchsia-500/10 to-fuchsia-600/10",
+      borderColor: "border-fuchsia-500/20"
     }
   ];
+
+  const containerVariants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.1
+      }
+    }
+  };
+
+  const itemVariants = {
+    hidden: { opacity: 0, y: 20 },
+    visible: { opacity: 1, y: 0 }
+  };
+
   return (
-    <section id="trajectory" className="py-12 bg-gradient-to-br from-primary/5 via-accent/5 to-primary/5 relative overflow-hidden">
-      {/* Background decorative elements - simplified */}
-      <div className="absolute inset-0 opacity-10">
-        <div className="absolute top-1/3 left-1/3 w-32 h-32 bg-accent rounded-full blur-2xl animate-pulse"></div>
-        <div className="absolute bottom-1/3 right-1/3 w-32 h-32 bg-primary rounded-full blur-2xl animate-pulse delay-1000"></div>
+    <section id="trajectory" className="py-20 bg-black relative overflow-hidden">
+      {/* Dynamic Background */}
+      <div className="absolute inset-0 opacity-20 pointer-events-none">
+        <motion.div
+          animate={{
+            scale: [1, 1.2, 1],
+            opacity: [0.1, 0.2, 0.1],
+          }}
+          transition={{ duration: 10, repeat: Infinity, ease: "easeInOut" }}
+          className="absolute top-0 right-0 w-[500px] h-[500px] bg-accent/20 rounded-full blur-[100px]"
+        />
+        <motion.div
+          animate={{
+            scale: [1.2, 1, 1.2],
+            opacity: [0.05, 0.15, 0.05],
+          }}
+          transition={{ duration: 12, repeat: Infinity, ease: "easeInOut", delay: 2 }}
+          className="absolute bottom-0 left-0 w-[600px] h-[600px] bg-primary/20 rounded-full blur-[120px]"
+        />
       </div>
 
       <div className="container mx-auto px-4 sm:px-6 relative z-10">
         <div className="max-w-4xl mx-auto">
-          {/* Section Header - more compact */}
-          <div className="text-center mb-8 sm:mb-10">
-            <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold text-white mb-3 sm:mb-4">
-              Mi Trayectoria y Experiencia
-            </h2>
-            <p className="text-sm sm:text-base md:text-lg text-white/80 max-w-2xl mx-auto">
-              Mi visión está respaldada por experiencia real. Te cuento mi camino paso a paso.
-            </p>
+          {/* Section Header */}
+          <div className="text-center mb-12">
+            <motion.h2
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              className="text-2xl sm:text-3xl md:text-4xl font-bold text-white mb-4"
+            >
+              Trayectoria y Experiencia
+            </motion.h2>
+            <motion.p
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: 0.1 }}
+              className="text-white/60 text-base sm:text-lg max-w-2xl mx-auto"
+            >
+              Un camino forjado entre la academia, la investigación y la industria tecnológica.
+            </motion.p>
           </div>
 
-          {/* Timeline - Single column with expandable cards */}
-          <div className="space-y-4">
+          {/* Timeline Cards */}
+          <motion.div
+            variants={containerVariants}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true }}
+            className="space-y-4"
+          >
             {timelineItems.map((item, index) => {
               const IconComponent = item.icon;
               const isExpanded = expandedCard === index;
-              
+
               return (
-                <div 
-                  key={index} 
-                  className={`bg-gradient-to-br ${item.color} rounded-xl border ${item.borderColor} transition-all duration-300 cursor-pointer group`}
+                <motion.div
+                  key={index}
+                  variants={itemVariants}
+                  layout
+                  className={`bg-gradient-to-br ${item.color} rounded-2xl border ${item.borderColor} backdrop-blur-sm transition-all duration-300 cursor-pointer overflow-hidden border-white/5 hover:border-white/20`}
                   onClick={() => setExpandedCard(isExpanded ? null : index)}
                   onMouseEnter={() => setExpandedCard(index)}
                   onMouseLeave={() => setExpandedCard(null)}
                 >
-                  {/* Card Header - Always visible */}
-                  <div className="p-3 sm:p-4 px-4 sm:px-6">
-                    <div className="flex items-start justify-between gap-3">
-                      <div className="flex items-start min-w-0 flex-1">
-                        <IconComponent className="h-4 w-4 sm:h-5 sm:w-5 text-accent mr-2 sm:mr-3 flex-shrink-0 mt-0.5" />
-                        <div className="min-w-0 flex-1">
-                          <h3 className="text-sm sm:text-lg font-semibold text-white leading-tight mb-1">{item.title}</h3>
-                          <p className="text-yellow-300/70 text-xs sm:text-sm font-medium leading-tight">{item.subtitle}</p>
+                  <div className="p-5 sm:p-6">
+                    <div className="flex items-start justify-between gap-4">
+                      <div className="flex items-start gap-4 flex-1">
+                        <div className="p-3 rounded-xl bg-white/5 text-accent flex-shrink-0">
+                          <IconComponent className="h-5 w-5 sm:h-6 sm:w-6" />
+                        </div>
+                        <div className="flex-1">
+                          <div className="flex flex-wrap items-center gap-x-3 gap-y-1 mb-1">
+                            <h3 className="text-lg sm:text-xl font-bold text-white">{item.title}</h3>
+                            <span className="text-[10px] uppercase tracking-wider font-bold text-accent/80 bg-accent/10 px-2 py-0.5 rounded-full">
+                              {item.period}
+                            </span>
+                          </div>
+                          <p className="text-white/60 text-sm sm:text-base font-medium">{item.subtitle}</p>
                         </div>
                       </div>
-                      <div className="flex items-center gap-1 sm:gap-2 flex-shrink-0">
-                        <span className="text-xs text-accent/60 bg-accent/10 px-1.5 sm:px-2 py-0.5 sm:py-1 rounded-full whitespace-nowrap">
-                          {item.period}
-                        </span>
-                        <div className={`transform transition-transform duration-300 ${isExpanded ? 'rotate-180' : ''}`}>
-                          <svg className="w-3 h-3 sm:w-4 sm:h-4 text-accent/60 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
-                          </svg>
-                        </div>
-                      </div>
+                      <motion.div
+                        animate={{ rotate: isExpanded ? 180 : 0 }}
+                        className="text-white/30 p-2"
+                      >
+                        <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                        </svg>
+                      </motion.div>
                     </div>
+
+                    <AnimatePresence>
+                      {isExpanded && (
+                        <motion.div
+                          initial={{ height: 0, opacity: 0 }}
+                          animate={{ height: "auto", opacity: 1 }}
+                          exit={{ height: 0, opacity: 0 }}
+                          transition={{ duration: 0.3, ease: "easeInOut" }}
+                        >
+                          <div className="pt-6 mt-6 border-t border-white/5">
+                            <p className="text-white/80 text-sm sm:text-base leading-relaxed">
+                              {item.description}
+                            </p>
+                          </div>
+                        </motion.div>
+                      )}
+                    </AnimatePresence>
                   </div>
-                  
-                  {/* Expandable Content */}
-                  <div className={`overflow-hidden transition-all duration-300 ${isExpanded ? 'max-h-96 opacity-100' : 'max-h-0 opacity-0'}`}>
-                    <div className="px-3 sm:px-4 pb-3 sm:pb-4">
-                      <div className="border-t border-white/10 pt-3 sm:pt-4">
-                        <p className="text-white/80 text-xs sm:text-sm leading-relaxed italic">
-                          "{item.description}"
-                        </p>
-                      </div>
-                    </div>
-                  </div>
-                </div>
+                </motion.div>
               );
             })}
-          </div>
+          </motion.div>
 
-          {/* Bottom Quote - compact & semantic */}
-<div className="mt-8 sm:mt-10 text-center">
-  <blockquote className="bg-gradient-to-r from-accent/10 to-primary/10 rounded-xl p-4 sm:p-6 border border-accent/20 max-w-3xl mx-auto">
-    <h3 className="text-base sm:text-lg font-semibold text-white mb-2 sm:mb-3">
-      De la teoría a la práctica
-    </h3>
-    <p className="text-sm sm:text-base text-white/80 leading-relaxed">
-      La tecnología vale cuando <span className="text-white">libera a las personas</span>. 
-      No es solo usar herramientas, es saber <span className="text-white">cuándo y cómo aplicarlas</span> para crear impacto real.
-    </p>
-    <cite className="mt-2 sm:mt-3 block text-xs sm:text-sm text-white/50 not-italic">Brian Montero</cite>
-  </blockquote>
-</div>
-
+          {/* Bottom Quote */}
+          <motion.div
+            initial={{ opacity: 0, scale: 0.95 }}
+            whileInView={{ opacity: 1, scale: 1 }}
+            viewport={{ once: true }}
+            className="mt-16 text-center"
+          >
+            <div className="bg-gradient-to-r from-accent/5 to-primary/5 rounded-3xl p-8 border border-white/5 relative overflow-hidden group">
+              <div className="absolute top-0 right-0 w-32 h-32 bg-accent/10 blur-[50px] rotate-45 transform translate-x-16 -translate-y-16 group-hover:bg-accent/20 transition-colors" />
+              <p className="text-lg sm:text-xl text-white/90 font-medium leading-relaxed italic relative z-10">
+                "La tecnología debe ser el puente entre los problemas complejos y las soluciones humanas simples."
+              </p>
+              <div className="mt-4 flex items-center justify-center gap-2">
+                <div className="h-px w-8 bg-accent/30" />
+                <cite className="text-sm font-bold text-accent tracking-widest uppercase not-italic">Brian Montero</cite>
+                <div className="h-px w-8 bg-accent/30" />
+              </div>
+            </div>
+          </motion.div>
         </div>
       </div>
     </section>

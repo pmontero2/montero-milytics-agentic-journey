@@ -1,5 +1,6 @@
 import { useState } from "react";
-import { ChevronDown, ChevronUp } from "lucide-react";
+import { ChevronDown } from "lucide-react";
+import { motion, AnimatePresence } from "framer-motion";
 
 export const FAQ = () => {
   const [openIndex, setOpenIndex] = useState<number | null>(null);
@@ -40,49 +41,76 @@ export const FAQ = () => {
   };
 
   return (
-    <div className="bg-card/30 border-t border-accent/20 py-16">
+    <section className="bg-black py-24 border-t border-white/5">
       <div className="container mx-auto px-6">
-        <div className="max-w-3xl mx-auto">
-          <h3 className="text-3xl md:text-4xl font-bold text-center text-foreground mb-6">
-            Preguntas Frecuentes
-          </h3>
-          
-          <p className="text-lg text-center text-foreground/70 mb-12 max-w-2xl mx-auto">
-            Si aún tienes dudas sobre cómo puedo ayudarte, aquí te dejo algunas respuestas claras.
-          </p>
-          
+        <div className="max-w-4xl mx-auto">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="text-center mb-16"
+          >
+            <h3 className="text-4xl md:text-5xl font-bold text-white mb-6">
+              Preguntas Frecuentes
+            </h3>
+            <p className="text-xl text-white/60 max-w-2xl mx-auto italic">
+              "Soluciones simples para preguntas complejas."
+            </p>
+          </motion.div>
+
           <div className="space-y-4">
-            {faqs.map((faq, index) => (
-              <div
-                key={index}
-                className="bg-card/50 backdrop-blur border border-accent/20 rounded-2xl overflow-hidden"
-              >
-                <button
-                  onClick={() => toggleFAQ(index)}
-                  className="w-full px-6 py-6 text-left flex items-center justify-between hover:bg-accent/5 transition-colors duration-300"
+            {faqs.map((faq, index) => {
+              const isOpen = openIndex === index;
+              return (
+                <motion.div
+                  key={index}
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: index * 0.05 }}
+                  className={`bg-white/5 backdrop-blur-sm border rounded-3xl overflow-hidden transition-colors duration-500 ${isOpen ? 'border-accent/40 bg-white/10' : 'border-white/5 hover:border-white/10'
+                    }`}
                 >
-                  <span className="text-lg font-semibold text-foreground">
-                    {faq.question}
-                  </span>
-                  {openIndex === index ? (
-                    <ChevronUp className="h-5 w-5 text-accent" />
-                  ) : (
-                    <ChevronDown className="h-5 w-5 text-foreground/60" />
-                  )}
-                </button>
-                
-                {openIndex === index && (
-                  <div className="px-6 pb-6">
-                    <p className="text-foreground/80 leading-relaxed">
-                      {faq.answer}
-                    </p>
-                  </div>
-                )}
-              </div>
-            ))}
+                  <button
+                    onClick={() => toggleFAQ(index)}
+                    className="w-full px-8 py-6 text-left flex items-center justify-between group"
+                  >
+                    <span className={`text-lg sm:text-xl font-bold transition-colors duration-300 ${isOpen ? 'text-accent' : 'text-white/80 group-hover:text-white'
+                      }`}>
+                      {faq.question}
+                    </span>
+                    <motion.div
+                      animate={{ rotate: isOpen ? 180 : 0 }}
+                      className={`transition-colors duration-300 ${isOpen ? 'text-accent' : 'text-white/30 group-hover:text-white/60'}`}
+                    >
+                      <ChevronDown className="h-6 w-6" />
+                    </motion.div>
+                  </button>
+
+                  <AnimatePresence>
+                    {isOpen && (
+                      <motion.div
+                        initial={{ height: 0, opacity: 0 }}
+                        animate={{ height: "auto", opacity: 1 }}
+                        exit={{ height: 0, opacity: 0 }}
+                        transition={{ duration: 0.3, ease: "easeInOut" }}
+                      >
+                        <div className="px-8 pb-8">
+                          <div className="border-t border-white/5 pt-6">
+                            <p className="text-white/70 text-lg leading-relaxed">
+                              {faq.answer}
+                            </p>
+                          </div>
+                        </div>
+                      </motion.div>
+                    )}
+                  </AnimatePresence>
+                </motion.div>
+              );
+            })}
           </div>
         </div>
       </div>
-    </div>
+    </section>
   );
 };
