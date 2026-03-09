@@ -64,8 +64,30 @@ const PAGES = [
   }
 ];
 
-// Generar XML del sitemap
-function generateSitemapXML() {
+// Obtener posts del blog para incluir sus URLs en el sitemap (build time)
+async function fetchBlogPostUrls() {
+  const base = process.env.BLOG_API_URL || 'https://radar.bmontero.com/api';
+  const url = `${base.replace(/\/$/, '')}/public/posts`;
+  try {
+    const res = await fetch(url);
+    if (!res.ok) return [];
+    const data = await res.json();
+    if (!Array.isArray(data)) return [];
+    return data.map((p) => ({
+      url: `/blog/${p.id}`,
+      lastmod: (p.publishedAt && p.publishedAt.split('T')[0]) || SITE_CONFIG.lastmod,
+      changefreq: 'weekly',
+      priority: '0.5',
+      description: p.title || 'Post'
+    }));
+  } catch (err) {
+    console.warn('⚠️ No se pudieron cargar posts para el sitemap:', err.message);
+    return [];
+  }
+}
+
+// Generar XML del sitemap (páginas estáticas + URLs de posts del blog)
+async function generateSitemapXML(blogPages = []) {
   const xmlHeader = `<?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
@@ -74,11 +96,12 @@ function generateSitemapXML() {
 
   const xmlFooter = `</urlset>`;
 
-  const urlEntries = PAGES.map(page => {
+  const allPages = [...PAGES, ...blogPages];
+  const urlEntries = allPages.map(page => {
     return `  <!-- ${page.description} -->
   <url>
     <loc>${SITE_CONFIG.baseUrl}${page.url}</loc>
-    <lastmod>${SITE_CONFIG.lastmod}</lastmod>
+    <lastmod>${page.lastmod || SITE_CONFIG.lastmod}</lastmod>
     <changefreq>${page.changefreq}</changefreq>
     <priority>${page.priority}</priority>
   </url>`;
@@ -88,15 +111,16 @@ function generateSitemapXML() {
 }
 
 // Escribir sitemap.xml
-function writeSitemap() {
-  const sitemapXML = generateSitemapXML();
+async function writeSitemap(blogPages = []) {
+  const sitemapXML = await generateSitemapXML(blogPages);
   const sitemapPath = path.join(__dirname, '..', 'public', 'sitemap.xml');
-  
+  const totalPages = PAGES.length + blogPages.length;
+
   try {
     fs.writeFileSync(sitemapPath, sitemapXML, 'utf8');
     console.log('✅ Sitemap.xml generado exitosamente');
     console.log(`📁 Ubicación: ${sitemapPath}`);
-    console.log(`📊 Páginas incluidas: ${PAGES.length}`);
+    console.log(`📊 Páginas incluidas: ${totalPages} (${PAGES.length} estáticas + ${blogPages.length} posts)`);
     console.log(`🌐 URL base: ${SITE_CONFIG.baseUrl}`);
   } catch (error) {
     console.error('❌ Error al generar sitemap:', error.message);
@@ -120,10 +144,11 @@ function validateConfig() {
 }
 
 // Función principal
-function main() {
+async function main() {
   console.log('🚀 Generando sitemap.xml...');
   validateConfig();
-  writeSitemap();
+  const blogPages = await fetchBlogPostUrls();
+  await writeSitemap(blogPages);
   console.log('✨ Proceso completado');
 }
 
@@ -133,6 +158,7 @@ main();
 export {
   generateSitemapXML,
   writeSitemap,
+  fetchBlogPostUrls,
   SITE_CONFIG,
   PAGES
 };

@@ -11,6 +11,7 @@ import { format } from "date-fns";
 import { es } from "date-fns/locale";
 import { AlertCircle, ArrowLeft, FileText } from "lucide-react";
 import ReactMarkdown from "react-markdown";
+import { Helmet } from "react-helmet-async";
 
 const BlogPost = () => {
   const { slug } = useParams<{ slug: string }>();
@@ -62,14 +63,48 @@ const BlogPost = () => {
   return (
     <div className="min-h-screen flex flex-col">
       {post && (
-        <SEO
-          title={post.title}
-          description={post.excerpt}
-          canonical={`https://www.bmontero.com/blog/${post.slug}`}
-          ogImage={post.coverImage || undefined}
-          keywords={post.title}
-          type="article"
-        />
+        <>
+          <SEO
+            title={post.title}
+            description={post.excerpt}
+            canonical={`https://www.bmontero.com/blog/${post.slug}`}
+            ogImage={post.coverImage || undefined}
+            keywords={post.title}
+            type="article"
+          />
+          <Helmet>
+            <script type="application/ld+json">
+              {JSON.stringify({
+                "@context": "https://schema.org",
+                "@type": "Article",
+                headline: post.title,
+                description: post.excerpt.slice(0, 160),
+                datePublished: post.publishedAt,
+                dateModified: post.publishedAt,
+                image: post.coverImage
+                  ? [post.coverImage]
+                  : ["https://www.bmontero.com/assets/logo-bmontero-FltwS1tl.png"],
+                author: {
+                  "@type": "Person",
+                  name: post.author || "Brian Montero",
+                  url: "https://www.bmontero.com",
+                },
+                publisher: {
+                  "@type": "Organization",
+                  name: "Brian Montero",
+                  logo: {
+                    "@type": "ImageObject",
+                    url: "https://www.bmontero.com/assets/logo-bmontero-FltwS1tl.png",
+                  },
+                },
+                mainEntityOfPage: {
+                  "@type": "WebPage",
+                  "@id": `https://www.bmontero.com/blog/${post.slug}`,
+                },
+              }).replace(/</g, "\\u003c")}
+            </script>
+          </Helmet>
+        </>
       )}
       {!post && !notFound && (
         <SEO title="Blog" canonical="https://www.bmontero.com/blog" />
