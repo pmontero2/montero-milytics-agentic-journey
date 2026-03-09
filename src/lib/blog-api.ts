@@ -10,16 +10,16 @@ const getBaseUrl = (): string => {
   return url.replace(/\/$/, "");
 };
 
-/** URL del listado de posts: GET .../public.posts */
+/** URL del listado de posts: GET .../public/posts */
 export function getPostsListUrl(): string {
   const base = getBaseUrl();
-  return base ? `${base}/public.posts` : "";
+  return base ? `${base}/public/posts` : "";
 }
 
-/** URL del detalle de un post: GET .../public.posts/:slug */
+/** URL del detalle de un post: GET .../public/posts/:slug */
 export function getPostDetailUrl(slug: string): string {
   const base = getBaseUrl();
-  return base && slug ? `${base}/public.posts/${encodeURIComponent(slug)}` : "";
+  return base && slug ? `${base}/public/posts/${encodeURIComponent(slug)}` : "";
 }
 
 export function isBlogApiConfigured(): boolean {
