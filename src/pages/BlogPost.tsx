@@ -10,6 +10,7 @@ import { useScrollToTop } from "@/hooks/use-scroll-to-top";
 import { format } from "date-fns";
 import { es } from "date-fns/locale";
 import { AlertCircle, ArrowLeft, FileText } from "lucide-react";
+import ReactMarkdown from "react-markdown";
 
 const BlogPost = () => {
   const { slug } = useParams<{ slug: string }>();
@@ -65,7 +66,9 @@ const BlogPost = () => {
           title={post.title}
           description={post.excerpt}
           canonical={`https://www.bmontero.com/blog/${post.slug}`}
+          ogImage={post.coverImage || undefined}
           keywords={post.title}
+          type="article"
         />
       )}
       {!post && !notFound && (
@@ -149,10 +152,9 @@ const BlogPost = () => {
                   />
                 </div>
               )}
-              <div
-                className="prose prose-invert prose-lg max-w-none prose-headings:text-white prose-p:text-white/80 prose-a:text-accent prose-strong:text-white prose-blockquote:border-accent prose-blockquote:text-white/70"
-                dangerouslySetInnerHTML={{ __html: post.body }}
-              />
+              <div className="prose prose-invert prose-lg max-w-none prose-headings:text-white prose-p:text-white/80 prose-a:text-accent prose-strong:text-white prose-blockquote:border-accent prose-blockquote:text-white/70">
+                <ReactMarkdown>{post.body}</ReactMarkdown>
+              </div>
             </article>
           )}
         </div>

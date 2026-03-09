@@ -9,6 +9,12 @@
 - **Seguridad**: ✅ NO se expone al navegador (más seguro)
 - **Nota**: Obtén esta URL desde tu panel de Vercel o configuración de webhooks
 
+### BLOG_API_URL
+- **Nombre**: `BLOG_API_URL`
+- **Valor**: `https://radar.bmontero.com/api`
+- **Descripción**: URL base del API de radar para el proxy del blog (listado y detalle de posts). Usado por las rutas serverless `/api/blog-posts` y `/api/blog-posts/[id]`.
+- **Seguridad**: ✅ NO se expone al navegador (solo se usa en el servidor)
+
 ## Variables Opcionales (Seguras para el Cliente)
 
 ### VITE_GA_ID

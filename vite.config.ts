@@ -7,6 +7,14 @@ export default defineConfig(({ mode }) => ({
   server: {
     host: "::",
     port: 8080,
+    proxy: {
+      // Blog: mismo origen, sin CORS. En dev redirigimos /api/blog-posts a radar.
+      "/api/blog-posts": {
+        target: "https://radar.bmontero.com",
+        changeOrigin: true,
+        rewrite: (path) => path.replace(/^\/api\/blog-posts/, "/api/public/posts"),
+      },
+    },
   },
   plugins: [react()],
   resolve: {
