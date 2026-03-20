@@ -21,7 +21,9 @@ const contactToEmail = process.env.CONTACT_TO_EMAIL;
 const contactFromEmail = process.env.CONTACT_FROM_EMAIL;
 const hcaptchaSecret = process.env.HCAPTCHA_SECRET_KEY;
 const siteUrl = process.env.VITE_SITE_URL || "https://www.bmontero.com";
-const emailLogoUrl = process.env.EMAIL_LOGO_URL || `${siteUrl}/assets/logo-bmontero-FltwS1tl.png`;
+const brandImageUrl = "https://yzdbodnmvmswpvszzxpc.supabase.co/storage/v1/object/public/img/firmabzyblanca.png";
+const emailLogoUrl = brandImageUrl;
+const emailSignatureUrl = brandImageUrl;
 
 const resend = resendApiKey ? new Resend(resendApiKey) : null;
 
@@ -154,6 +156,7 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
             </tr>
             <tr>
               <td style="padding: 16px 28px 24px; border-top: 1px solid #242424;">
+                <img src="${emailSignatureUrl}" alt="Firma Brian Montero" width="180" style="display: block; margin-bottom: 10px;" />
                 <p style="margin: 0; color: #6b7280; font-size: 12px;">
                   Sistema de contacto automatizado · ${escapeHtml(siteUrl)}
                 </p>
@@ -205,6 +208,7 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
               <td style="padding: 16px 28px 26px; border-top: 1px solid #242424;">
                 <p style="margin: 0; color: #ffffff; font-size: 14px; font-weight: 600;">Brian Montero</p>
                 <p style="margin: 6px 0 0; color: #9ca3af; font-size: 12px;">IA aplicada y automatización de procesos</p>
+                <img src="${emailSignatureUrl}" alt="Firma Brian Montero" width="180" style="display: block; margin-top: 12px;" />
               </td>
             </tr>
           </table>
