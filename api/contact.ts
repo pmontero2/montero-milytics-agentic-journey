@@ -20,6 +20,8 @@ const resendApiKey = process.env.RESEND_API_KEY;
 const contactToEmail = process.env.CONTACT_TO_EMAIL;
 const contactFromEmail = process.env.CONTACT_FROM_EMAIL;
 const hcaptchaSecret = process.env.HCAPTCHA_SECRET_KEY;
+const siteUrl = process.env.VITE_SITE_URL || "https://www.bmontero.com";
+const emailLogoUrl = process.env.EMAIL_LOGO_URL || `${siteUrl}/assets/logo-bmontero-FltwS1tl.png`;
 
 const resend = resendApiKey ? new Resend(resendApiKey) : null;
 
@@ -30,6 +32,19 @@ function escapeHtml(value: string) {
     .replace(/>/g, "&gt;")
     .replace(/"/g, "&quot;")
     .replace(/'/g, "&#039;");
+}
+
+function detailsRow(label: string, value: string) {
+  return `
+    <tr>
+      <td style="padding: 12px 0; border-bottom: 1px solid #2a2a2a; color: #9ca3af; width: 180px; vertical-align: top; font-size: 14px;">
+        ${escapeHtml(label)}
+      </td>
+      <td style="padding: 12px 0; border-bottom: 1px solid #2a2a2a; color: #f3f4f6; font-size: 14px;">
+        ${escapeHtml(value)}
+      </td>
+    </tr>
+  `;
 }
 
 async function verifyHCaptcha(token: string, remoteIp?: string) {
@@ -94,15 +109,110 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
     : "Nuevo lead desde landing";
 
   const detailsHtml = `
-    <h2>Nuevo lead</h2>
-    <p><b>Nombre:</b> ${escapeHtml(nombre)}</p>
-    <p><b>Correo:</b> ${escapeHtml(correo)}</p>
-    <p><b>Teléfono:</b> ${escapeHtml(telefono)}</p>
-    ${body?.empresa ? `<p><b>Empresa/Rubro:</b> ${escapeHtml(body.empresa)}</p>` : ""}
-    ${body?.usa_ia ? `<p><b>¿Usa IA?:</b> ${escapeHtml(body.usa_ia)}</p>` : ""}
-    ${body?.objetivo ? `<p><b>Objetivo:</b> ${escapeHtml(body.objetivo)}</p>` : ""}
-    ${body?.mensaje ? `<p><b>Mensaje:</b> ${escapeHtml(body.mensaje)}</p>` : ""}
-    ${body?.source ? `<p><b>Fuente:</b> ${escapeHtml(body.source)}</p>` : ""}
+<!doctype html>
+<html>
+  <body style="margin: 0; padding: 0; background-color: #070707; font-family: Inter, Arial, sans-serif;">
+    <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="background-color: #070707; padding: 28px 12px;">
+      <tr>
+        <td align="center">
+          <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="max-width: 680px; background: #111111; border: 1px solid #242424; border-radius: 16px; overflow: hidden;">
+            <tr>
+              <td style="background: linear-gradient(135deg, #0a0a0a 0%, #151515 60%, #1f1f1f 100%); padding: 28px 28px 22px;">
+                <img src="${emailLogoUrl}" alt="Brian Montero" width="170" style="display: block; margin-bottom: 18px;" />
+                <p style="margin: 0; color: #facc15; font-weight: 700; font-size: 12px; letter-spacing: .08em; text-transform: uppercase;">
+                  Nuevo lead recibido
+                </p>
+                <h1 style="margin: 10px 0 0; color: #ffffff; font-size: 26px; line-height: 1.2;">
+                  ${escapeHtml(subject)}
+                </h1>
+              </td>
+            </tr>
+            <tr>
+              <td style="padding: 24px 28px 8px;">
+                <p style="margin: 0 0 18px; color: #d1d5db; font-size: 15px; line-height: 1.6;">
+                  Llegó una nueva solicitud desde tu sitio web. Estos son los datos del contacto:
+                </p>
+                <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="border-collapse: collapse;">
+                  ${detailsRow("Nombre", nombre)}
+                  ${detailsRow("Correo", correo)}
+                  ${detailsRow("Teléfono", telefono)}
+                  ${body?.empresa ? detailsRow("Empresa / Rubro", body.empresa) : ""}
+                  ${body?.usa_ia ? detailsRow("¿Usa IA actualmente?", body.usa_ia) : ""}
+                  ${body?.objetivo ? detailsRow("Objetivo", body.objetivo) : ""}
+                  ${body?.mensaje ? detailsRow("Mensaje", body.mensaje) : ""}
+                  ${body?.source ? detailsRow("Fuente", body.source) : ""}
+                </table>
+              </td>
+            </tr>
+            <tr>
+              <td style="padding: 0 28px 28px;">
+                <a href="mailto:${escapeHtml(correo)}"
+                  style="display: inline-block; background: #facc15; color: #111111; text-decoration: none; font-weight: 700; font-size: 14px; border-radius: 999px; padding: 12px 20px; margin-top: 18px;">
+                  Responder contacto
+                </a>
+              </td>
+            </tr>
+            <tr>
+              <td style="padding: 16px 28px 24px; border-top: 1px solid #242424;">
+                <p style="margin: 0; color: #6b7280; font-size: 12px;">
+                  Sistema de contacto automatizado · ${escapeHtml(siteUrl)}
+                </p>
+              </td>
+            </tr>
+          </table>
+        </td>
+      </tr>
+    </table>
+  </body>
+</html>
+  `;
+
+  const clientHtml = `
+<!doctype html>
+<html>
+  <body style="margin: 0; padding: 0; background-color: #070707; font-family: Inter, Arial, sans-serif;">
+    <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="background-color: #070707; padding: 28px 12px;">
+      <tr>
+        <td align="center">
+          <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="max-width: 680px; background: #111111; border: 1px solid #242424; border-radius: 16px; overflow: hidden;">
+            <tr>
+              <td style="background: linear-gradient(135deg, #0a0a0a 0%, #151515 60%, #1f1f1f 100%); padding: 28px 28px 22px;">
+                <img src="${emailLogoUrl}" alt="Brian Montero" width="170" style="display: block; margin-bottom: 18px;" />
+                <p style="margin: 0; color: #facc15; font-weight: 700; font-size: 12px; letter-spacing: .08em; text-transform: uppercase;">
+                  Confirmación de contacto
+                </p>
+                <h1 style="margin: 10px 0 0; color: #ffffff; font-size: 26px; line-height: 1.2;">
+                  Recibí tu mensaje, ${escapeHtml(nombre)}
+                </h1>
+              </td>
+            </tr>
+            <tr>
+              <td style="padding: 24px 28px;">
+                <p style="margin: 0 0 12px; color: #e5e7eb; font-size: 15px; line-height: 1.7;">
+                  Gracias por escribir. Ya tengo tu solicitud y revisaré personalmente la información que enviaste.
+                </p>
+                <p style="margin: 0 0 18px; color: #d1d5db; font-size: 15px; line-height: 1.7;">
+                  Te responderé a la brevedad para coordinar próximos pasos.
+                </p>
+                <div style="margin-top: 18px; padding: 14px 16px; border-radius: 12px; border: 1px solid #2a2a2a; background-color: #0c0c0c;">
+                  <p style="margin: 0; color: #9ca3af; font-size: 13px;">
+                    Si quieres agregar contexto, responde este correo con más detalles de tu caso.
+                  </p>
+                </div>
+              </td>
+            </tr>
+            <tr>
+              <td style="padding: 16px 28px 26px; border-top: 1px solid #242424;">
+                <p style="margin: 0; color: #ffffff; font-size: 14px; font-weight: 600;">Brian Montero</p>
+                <p style="margin: 6px 0 0; color: #9ca3af; font-size: 12px;">IA aplicada y automatización de procesos</p>
+              </td>
+            </tr>
+          </table>
+        </td>
+      </tr>
+    </table>
+  </body>
+</html>
   `;
 
   try {
@@ -118,11 +228,7 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
       from: contactFromEmail,
       to: correo,
       subject: "Recibimos tu mensaje - Brian Montero",
-      html: `
-        <p>Hola ${escapeHtml(nombre)},</p>
-        <p>Gracias por escribir. Recibí tu solicitud y te responderé pronto.</p>
-        <p>Saludos,<br/>Brian Montero</p>
-      `,
+      html: clientHtml,
     });
 
     return res.status(200).json({ ok: true });
