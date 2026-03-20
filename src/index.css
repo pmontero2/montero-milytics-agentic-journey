@@ -162,3 +162,23 @@ html {
   }
 }
 
+.phone-field .PhoneInput {
+  @apply flex items-center gap-2 rounded-md border border-input bg-background px-3 py-2 text-base ring-offset-background;
+}
+
+.phone-field .PhoneInput:focus-within {
+  @apply ring-2 ring-ring ring-offset-2;
+}
+
+.phone-field .PhoneInputCountry {
+  @apply mr-1;
+}
+
+.phone-field .PhoneInputCountrySelect {
+  @apply bg-transparent text-foreground;
+}
+
+.phone-field .PhoneInputInput {
+  @apply flex-1 bg-transparent text-foreground outline-none placeholder:text-muted-foreground;
+}
+

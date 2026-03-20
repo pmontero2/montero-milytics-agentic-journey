@@ -55,7 +55,7 @@ const Blog = () => {
               <AlertCircle className="h-12 w-12 text-amber-400 mx-auto mb-4" />
               <p className="text-white/80 mb-2">API del blog no configurada.</p>
               <p className="text-sm text-white/50">
-                Configura <code className="text-accent">VITE_BLOG_API_URL</code> en el entorno.
+                Configura <code className="text-accent">BLOG_API_URL</code> en el entorno de Vercel.
               </p>
             </div>
           )}
@@ -109,14 +109,14 @@ const Blog = () => {
           {!notConfigured && !isLoading && !isError && posts && posts.length > 0 && (
             <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3 max-w-6xl mx-auto">
               {posts.map((post) => (
-                <Link key={post.slug} to={`/blog/${post.slug}`}>
-                  <Card className="h-full bg-zinc-900/20 border-white/5 hover:bg-zinc-900/40 hover:border-accent/20 transition-all duration-300 overflow-hidden group">
+                <Link key={post.slug} to={`/blog/${post.slug}`} className="h-full">
+                  <Card className="h-full bg-zinc-900/30 border-white/10 hover:bg-zinc-900/60 hover:border-accent/30 transition-all duration-300 overflow-hidden group hover:-translate-y-1 hover:shadow-[0_20px_50px_rgba(0,0,0,0.45)]">
                     {post.coverImage ? (
                       <div className="aspect-video overflow-hidden">
                         <img
                           src={post.coverImage}
                           alt=""
-                          className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                          className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                         />
                       </div>
                     ) : (
@@ -141,6 +141,9 @@ const Blog = () => {
                       <p className="text-sm text-white/60 line-clamp-3">
                         {post.excerpt}
                       </p>
+                      <div className="mt-5 inline-flex items-center text-xs font-medium text-accent/90 group-hover:text-accent transition-colors">
+                        Leer artículo →
+                      </div>
                     </CardContent>
                   </Card>
                 </Link>

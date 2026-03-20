@@ -22,8 +22,8 @@ export const StickyCTA = () => {
           size="lg"
           className="bg-accent text-accent-foreground hover:bg-accent/90 font-bold text-sm sm:text-lg px-4 sm:px-8 py-3 sm:py-6 rounded-full shadow-[var(--glow-accent)] hover:scale-110 transition-all duration-300 min-h-[40px] sm:min-h-[44px]"
         >
-          <span className="hidden sm:inline">Obtener consulta gratis</span>
-          <span className="sm:hidden">Consulta gratis</span>
+          <span className="hidden sm:inline">Hablemos</span>
+          <span className="sm:hidden">Hablemos</span>
           <ArrowRight className="ml-1 sm:ml-2 h-4 w-4 sm:h-5 sm:w-5" />
         </Button>
       </div>

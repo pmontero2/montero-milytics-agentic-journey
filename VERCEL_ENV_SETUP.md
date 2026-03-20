@@ -2,12 +2,29 @@
 
 ## Variables Requeridas
 
-### WEBHOOK
-- **Nombre**: `WEBHOOK`
-- **Valor**: `tu-webhook-url-aqui` (ejemplo: `https://dev.milytics.io/webhook/tu-id-aqui`)
-- **Descripción**: URL del webhook para procesar formularios de contacto
-- **Seguridad**: ✅ NO se expone al navegador (más seguro)
-- **Nota**: Obtén esta URL desde tu panel de Vercel o configuración de webhooks
+### RESEND_API_KEY
+- **Nombre**: `RESEND_API_KEY`
+- **Valor**: `re_xxxxxxxxxxxxxxxxx`
+- **Descripción**: API key de Resend para envío de correos.
+- **Seguridad**: ✅ Solo servidor (NO `VITE_`).
+
+### CONTACT_TO_EMAIL
+- **Nombre**: `CONTACT_TO_EMAIL`
+- **Valor**: `info@tudominio.com`
+- **Descripción**: Correo donde llegarán los formularios.
+- **Seguridad**: ✅ Solo servidor (NO `VITE_`).
+
+### CONTACT_FROM_EMAIL
+- **Nombre**: `CONTACT_FROM_EMAIL`
+- **Valor**: `contacto@tudominio.com`
+- **Descripción**: Remitente verificado en Resend.
+- **Seguridad**: ✅ Solo servidor (NO `VITE_`).
+
+### HCAPTCHA_SECRET_KEY
+- **Nombre**: `HCAPTCHA_SECRET_KEY`
+- **Valor**: `tu-secret-de-hcaptcha`
+- **Descripción**: Secret de hCaptcha para verificar tokens en `/api/contact`.
+- **Seguridad**: ✅ Solo servidor (NO `VITE_`).
 
 ### BLOG_API_URL
 - **Nombre**: `BLOG_API_URL`
@@ -16,6 +33,18 @@
 - **Seguridad**: ✅ NO se expone al navegador (solo se usa en el servidor)
 
 ## Variables Opcionales (Seguras para el Cliente)
+
+### VITE_HCAPTCHA_SITE_KEY
+- **Nombre**: `VITE_HCAPTCHA_SITE_KEY`
+- **Valor**: `tu-site-key-de-hcaptcha`
+- **Descripción**: Site key pública de hCaptcha para validar captcha en formularios.
+- **Seguridad**: ⚠️ Se expone al navegador (es normal en captchas).
+
+### VITE_CONTACT_API_URL
+- **Nombre**: `VITE_CONTACT_API_URL`
+- **Valor**: `https://tu-dominio.com/api/contact` (opcional)
+- **Descripción**: Endpoint explícito para desarrollo/local. Si no está, usa `/api/contact`.
+- **Seguridad**: ⚠️ Se expone al navegador.
 
 ### VITE_GA_ID
 - **Nombre**: `VITE_GA_ID`
@@ -38,13 +67,11 @@
 
 ## Notas Importantes de Seguridad
 
-- ✅ **WEBHOOK**: NO usa prefijo `VITE_` - NO se expone al navegador
 - ⚠️ **Variables con VITE_**: Se exponen al cliente, solo usar para datos públicos
 - 🔒 **Variables sin VITE_**: Solo disponibles en el servidor/build time
 - 🛡️ **Recomendación**: Solo usar `VITE_` para datos que es seguro que vea el público
 
 ## ¿Por qué esta configuración es más segura?
 
-- El webhook URL no será visible en el código fuente del navegador
 - Solo las variables realmente necesarias para el cliente se exponen
 - Mantenemos la funcionalidad sin comprometer la seguridad

@@ -55,7 +55,7 @@ export const CTASection = () => {
             size="lg"
             className="bg-accent text-accent-foreground hover:bg-accent/90 font-bold px-12 py-8 text-xl rounded-full shadow-[0_0_40px_rgba(var(--accent),0.4)] hover:scale-105 transition-all duration-300 group"
           >
-            Obtener consulta gratis
+            Hablemos
             <ArrowRight className="ml-3 h-6 w-6 group-hover:translate-x-2 transition-transform duration-300" />
           </Button>
 

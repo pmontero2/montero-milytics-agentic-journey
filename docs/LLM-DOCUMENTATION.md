@@ -213,7 +213,7 @@ interface FAQ {
 ### Variables de Entorno
 ```env
 VITE_SITE_URL=https://www.bmontero.com
-VITE_CONTACT_EMAIL=contacto@brianmontero.com
+VITE_CONTACT_API_URL=/api/contact
 VITE_ANALYTICS_ID=GA_MEASUREMENT_ID
 ```
 

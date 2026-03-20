@@ -7,10 +7,7 @@ import { CommunityContent } from "@/components/CommunityContent";
 import { StickyCTA } from "@/components/StickyCTA";
 import { CTASection } from "@/components/CTASection";
 // import { ScrollProgressHome } from "@/components/ScrollProgressHome";
-import { Testimonial } from "@/components/Testimonial";
 import { Footer } from "@/components/Footer";
-import { WorkflowSection } from "@/components/WorkflowSection";
-import { FAQ } from "@/components/FAQ";
 import { SEO } from "@/components/SEO";
 import { useScrollToTop } from "@/hooks/use-scroll-to-top";
 import { ScrollReveal } from "@/components/ScrollReveal";
@@ -57,13 +54,6 @@ const Home = () => {
       <ScrollReveal>
         <div id="community">
           <CommunityContent />
-        </div>
-      </ScrollReveal>
-
-      {/* FAQ Section */}
-      <ScrollReveal>
-        <div id="faq">
-          <FAQ />
         </div>
       </ScrollReveal>
 

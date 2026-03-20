@@ -1,14 +1,15 @@
-import { ArrowDown, Eye, Building2, ChevronDown, Calendar } from "lucide-react";
+import { ArrowDown, Building2, Calendar } from "lucide-react";
 import { Button } from "./ui/button";
 import { useNavigate } from "react-router-dom";
 import { useState } from "react";
 import { FloatingContactForm } from "./FloatingContactForm";
 import brinziImage from "@/assets/bzy2.webp";
-import { motion } from "framer-motion";
+import { motion, useReducedMotion } from "framer-motion";
 
 export const HeroHome = () => {
   const navigate = useNavigate();
   const [isFormOpen, setIsFormOpen] = useState(false);
+  const shouldReduceMotion = useReducedMotion();
 
   const scrollToVision = () => {
     document.getElementById("vision-purpose")?.scrollIntoView({ behavior: "smooth" });
@@ -67,20 +68,36 @@ export const HeroHome = () => {
       {/* Animated Background */}
       <div className="absolute inset-0 opacity-30">
         <motion.div
-          animate={{
-            scale: [1, 1.25, 1],
-            opacity: [0.15, 0.35, 0.15],
-          }}
-          transition={{ duration: 7, repeat: Infinity, ease: "easeInOut" }}
-          className="absolute top-1/4 left-1/4 w-[500px] h-[500px] bg-accent/40 rounded-full blur-[100px]"
+          animate={
+            shouldReduceMotion
+              ? { scale: 1, opacity: 0.2 }
+              : {
+                  scale: [1, 1.2, 1],
+                  opacity: [0.15, 0.32, 0.15],
+                }
+          }
+          transition={
+            shouldReduceMotion
+              ? { duration: 0 }
+              : { duration: 7, repeat: Infinity, ease: "easeInOut" }
+          }
+          className="absolute top-1/4 left-1/4 w-[420px] h-[420px] md:w-[500px] md:h-[500px] bg-accent/40 rounded-full blur-[90px] will-change-transform"
         />
         <motion.div
-          animate={{
-            scale: [1.25, 1, 1.25],
-            opacity: [0.1, 0.3, 0.1],
-          }}
-          transition={{ duration: 9, repeat: Infinity, ease: "easeInOut", delay: 1 }}
-          className="absolute bottom-1/4 right-1/4 w-[600px] h-[600px] bg-primary/40 rounded-full blur-[120px]"
+          animate={
+            shouldReduceMotion
+              ? { scale: 1, opacity: 0.18 }
+              : {
+                  scale: [1.2, 1, 1.2],
+                  opacity: [0.1, 0.28, 0.1],
+                }
+          }
+          transition={
+            shouldReduceMotion
+              ? { duration: 0 }
+              : { duration: 9, repeat: Infinity, ease: "easeInOut", delay: 1 }
+          }
+          className="absolute bottom-1/4 right-1/4 w-[460px] h-[460px] md:w-[560px] md:h-[560px] bg-primary/40 rounded-full blur-[105px] will-change-transform"
         />
       </div>
 
@@ -97,14 +114,13 @@ export const HeroHome = () => {
             className="flex-shrink-0 z-10 mb-8 lg:mb-0 relative"
           >
             <motion.div
-              animate={{
-                y: [0, -15, 0],
-              }}
-              transition={{
-                duration: 6,
-                repeat: Infinity,
-                ease: "easeInOut"
-              }}
+              animate={shouldReduceMotion ? { y: 0 } : { y: [0, -10, 0] }}
+              transition={
+                shouldReduceMotion
+                  ? { duration: 0 }
+                  : { duration: 6, repeat: Infinity, ease: "easeInOut" }
+              }
+              className="will-change-transform"
             >
               <div className="absolute -inset-4 bg-accent/20 rounded-full blur-2xl opacity-60 animate-pulse" />
               <img
@@ -152,15 +168,15 @@ export const HeroHome = () => {
                 className="bg-accent text-accent-foreground hover:bg-accent/90 font-bold text-base sm:text-lg px-8 py-6 rounded-full shadow-[0_0_30px_rgba(var(--accent),0.3)] hover:scale-105 transition-all duration-300 group w-full sm:w-auto"
               >
                 <Calendar className="mr-2 h-5 w-5 group-hover:rotate-12 transition-transform duration-300" />
-                Agenda diagnóstico gratis
+                Hablemos
               </Button>
               <Button
                 onClick={goToEmpresasAgenticas}
                 variant="outline"
                 size="lg"
-                className="border-white/20 text-white hover:bg-white/10 font-semibold text-base sm:text-lg px-8 py-6 rounded-full hover:scale-105 transition-all duration-300 group w-full sm:w-auto"
+                className="border-white/25 bg-white/[0.03] text-white hover:text-white hover:bg-white/15 hover:border-white/40 font-semibold text-base sm:text-lg px-8 py-6 rounded-full hover:scale-105 transition-[transform,box-shadow,background-color,border-color] duration-300 ease-out shadow-[0_8px_24px_rgba(0,0,0,0.25)] hover:shadow-[0_14px_36px_rgba(0,0,0,0.35)] group w-full sm:w-auto"
               >
-                <Building2 className="mr-2 h-5 w-5 group-hover:scale-110 transition-transform duration-300" />
+                <Building2 className="mr-2 h-5 w-5 group-hover:scale-110 group-hover:translate-x-0.5 transition-transform duration-300" />
                 Ver Empresas Agénticas
               </Button>
             </motion.div>

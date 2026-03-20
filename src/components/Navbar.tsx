@@ -22,14 +22,20 @@ export const Navbar = () => {
   }, []);
 
   const navItems = [
-    { label: "Inicio", action: () => navigate("/") },
-    { label: "Empresas Agénticas", action: () => navigate("/empresas-agenticas") },
-    { label: "Proyectos", action: () => navigate("/proyectos") },
-    { label: "Blog", action: () => navigate("/blog") },
-    { label: "Sobre Mí", action: () => navigate("/sobre-mi") },
+    { label: "Inicio", path: "/" },
+    { label: "Empresas Agénticas", path: "/empresas-agenticas" },
+    { label: "Proyectos", path: "/proyectos" },
+    { label: "Blog", path: "/blog" },
+    { label: "FAQ", path: "/preguntas-frecuentes" },
+    { label: "Sobre Mí", path: "/sobre-mi" },
   ];
 
-  const isBlogActive = location.pathname === "/blog" || location.pathname.startsWith("/blog/");
+  const isItemActive = (path: string) => {
+    if (path === "/blog") {
+      return location.pathname === "/blog" || location.pathname.startsWith("/blog/");
+    }
+    return location.pathname === path;
+  };
 
   return (
     <motion.nav
@@ -69,24 +75,16 @@ export const Navbar = () => {
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5, delay: 0.1 * index }}
                 whileHover={{ y: -2 }}
-                onClick={item.action}
+                onClick={() => navigate(item.path)}
                 className={cn(
                   "px-4 py-2 transition-colors duration-300 font-medium text-sm sm:text-base rounded-full relative group",
-                  ((item.label === "Inicio" && location.pathname === "/") ||
-                    (item.label === "Empresas Agénticas" && location.pathname === "/empresas-agenticas") ||
-                    (item.label === "Proyectos" && location.pathname === "/proyectos") ||
-                    (item.label === "Blog" && isBlogActive) ||
-                    (item.label === "Sobre Mí" && location.pathname === "/sobre-mi"))
+                  isItemActive(item.path)
                     ? "text-accent"
                     : "text-white/80 hover:text-white"
                 )}
               >
                 {item.label}
-                {((item.label === "Inicio" && location.pathname === "/") ||
-                  (item.label === "Empresas Agénticas" && location.pathname === "/empresas-agenticas") ||
-                  (item.label === "Proyectos" && location.pathname === "/proyectos") ||
-                  (item.label === "Blog" && isBlogActive) ||
-                  (item.label === "Sobre Mí" && location.pathname === "/sobre-mi")) && (
+                {isItemActive(item.path) && (
                     <motion.div
                       layoutId="activeNav"
                       className="absolute inset-0 bg-white/5 rounded-full -z-10"
@@ -139,14 +137,10 @@ export const Navbar = () => {
                 {navItems.map((item) => (
                   <button
                     key={item.label}
-                    onClick={item.action}
+                    onClick={() => navigate(item.path)}
                     className={cn(
                       "block w-full text-left transition-colors duration-300 font-medium py-3 px-4 rounded-xl text-sm sm:text-base",
-                      ((item.label === "Inicio" && location.pathname === "/") ||
-                        (item.label === "Empresas Agénticas" && location.pathname === "/empresas-agenticas") ||
-                        (item.label === "Proyectos" && location.pathname === "/proyectos") ||
-                        (item.label === "Blog" && isBlogActive) ||
-                        (item.label === "Sobre Mí" && location.pathname === "/sobre-mi"))
+                      isItemActive(item.path)
                         ? "bg-accent/10 text-accent"
                         : "text-white/80 hover:bg-white/5 hover:text-white"
                     )}

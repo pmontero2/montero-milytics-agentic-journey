@@ -1,4 +1,4 @@
-import { Newspaper, Users, Play, ExternalLink, Linkedin } from "lucide-react";
+import { Newspaper, Users, FolderKanban, ExternalLink, Linkedin } from "lucide-react";
 import { Button } from "./ui/button";
 import { motion } from "framer-motion";
 
@@ -16,13 +16,13 @@ export const CommunityContent = () => {
     },
     {
       icon: Newspaper,
-      title: "Milytics News",
-      subtitle: "El noticiero inteligente",
-      description: "Las últimas novedades en IA, casos de éxito y herramientas que realmente funcionan.",
+      title: "Blog",
+      subtitle: "Artículos y recursos",
+      description: "Publicaciones sobre IA, automatización, casos reales y herramientas aplicadas a negocios.",
       color: "from-green-500/10 to-green-600/10",
       borderColor: "border-green-500/20",
-      cta: "Leer noticias",
-      url: "https://www.milytics.cl/es/news"
+      cta: "Ver blog",
+      url: "/blog"
     },
     {
       icon: Users,
@@ -35,14 +35,14 @@ export const CommunityContent = () => {
       url: "https://discord.gg/dT8KkmQdGT"
     },
     {
-      icon: Play,
-      title: "Últimos videos",
-      subtitle: "YouTube oficial",
-      description: "Contenido visual donde explico conceptos complejos de forma simple y práctica.",
+      icon: FolderKanban,
+      title: "Proyectos",
+      subtitle: "Casos de implementación",
+      description: "Explora soluciones reales que construí para automatizar procesos y generar impacto medible.",
       color: "from-orange-500/10 to-orange-600/10",
       borderColor: "border-orange-500/20",
-      cta: "Ver videos",
-      url: "https://www.youtube.com/@Milytics"
+      cta: "Ver proyectos",
+      url: "/proyectos"
     }
   ];
 
