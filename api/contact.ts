@@ -49,6 +49,24 @@ function detailsRow(label: string, value: string) {
   `;
 }
 
+function getErrorMessage(error: unknown) {
+  if (error instanceof Error && error.message) return error.message;
+  if (typeof error === "string" && error.trim()) return error.trim();
+
+  if (error && typeof error === "object") {
+    const maybeMessage = (error as { message?: unknown }).message;
+    if (typeof maybeMessage === "string" && maybeMessage.trim()) return maybeMessage.trim();
+
+    const maybeName = (error as { name?: unknown }).name;
+    const maybeStatusCode = (error as { statusCode?: unknown }).statusCode;
+    if (typeof maybeName === "string" && typeof maybeStatusCode === "number") {
+      return `${maybeName} (${maybeStatusCode})`;
+    }
+  }
+
+  return "Error desconocido";
+}
+
 async function verifyHCaptcha(token: string, remoteIp?: string) {
   const body = new URLSearchParams({
     secret: hcaptchaSecret || "",
@@ -73,12 +91,23 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
     return res.status(405).json({ ok: false, error: "Method not allowed" });
   }
 
-  if (!resend || !contactToEmail || !contactFromEmail || !hcaptchaSecret) {
+  const missingEnvVars = [
+    !resendApiKey?.trim() ? "RESEND_API_KEY" : null,
+    !contactToEmail?.trim() ? "CONTACT_TO_EMAIL" : null,
+    !contactFromEmail?.trim() ? "CONTACT_FROM_EMAIL" : null,
+    !hcaptchaSecret?.trim() ? "HCAPTCHA_SECRET_KEY" : null,
+  ].filter(Boolean) as string[];
+
+  if (missingEnvVars.length > 0 || !resend) {
     return res.status(500).json({
       ok: false,
-      error: "Faltan variables: RESEND_API_KEY, CONTACT_TO_EMAIL, CONTACT_FROM_EMAIL, HCAPTCHA_SECRET_KEY",
+      error: `Faltan variables: ${missingEnvVars.join(", ")}`,
     });
   }
+
+  const verifiedContactToEmail = contactToEmail!.trim();
+  const verifiedContactFromEmail = contactFromEmail!.trim();
+  const resendClient = resend;
 
   const body = (typeof req.body === "string" ? JSON.parse(req.body) : req.body) as ContactBody;
 
@@ -220,16 +249,16 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
   `;
 
   try {
-    await resend.emails.send({
-      from: contactFromEmail,
-      to: contactToEmail,
+    await resendClient.emails.send({
+      from: verifiedContactFromEmail,
+      to: verifiedContactToEmail,
       replyTo: correo,
       subject,
       html: detailsHtml,
     });
 
-    await resend.emails.send({
-      from: contactFromEmail,
+    await resendClient.emails.send({
+      from: verifiedContactFromEmail,
       to: correo,
       subject: "Recibimos tu mensaje - Brian Montero",
       html: clientHtml,
@@ -238,6 +267,10 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
     return res.status(200).json({ ok: true });
   } catch (error) {
     console.error("[contact]", error);
-    return res.status(502).json({ ok: false, error: "No se pudo enviar el correo." });
+    const debugMessage = getErrorMessage(error);
+    return res.status(502).json({
+      ok: false,
+      error: `No se pudo enviar el correo. Detalle: ${debugMessage}`,
+    });
   }
 }
