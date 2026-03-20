@@ -102,11 +102,19 @@ export const FloatingContactForm = ({ isOpen, onClose, source }: FloatingContact
       });
 
       if (!response.ok) {
+        let apiError = "";
+        try {
+          const errorPayload = (await response.json()) as { error?: string };
+          apiError = errorPayload?.error?.trim() || "";
+        } catch {
+          // Ignora respuestas sin JSON válido.
+        }
         if (response.status === 404) {
           setSubmitError("Endpoint de contacto no encontrado (404). Configura VITE_CONTACT_API_URL o usa `vercel dev`.");
           return;
         }
-        throw new Error(`Endpoint respondió ${response.status}`);
+        setSubmitError(apiError || `No se pudo enviar el formulario (HTTP ${response.status}).`);
+        return;
       }
 
       const result = (await response.json()) as { ok?: boolean; error?: string };
